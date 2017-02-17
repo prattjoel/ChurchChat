@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */; };
+		5DF82A121E57B2C500A00290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A111E57B2C500A00290 /* ViewController.swift */; };
+		5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A131E57B2C500A00290 /* Main.storyboard */; };
+		5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A161E57B2C500A00290 /* Assets.xcassets */; };
+		5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */; };
+		5DF82A251E57B2C500A00290 /* ChurchChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A241E57B2C500A00290 /* ChurchChatTests.swift */; };
+		5DF82A301E57B2C500A00290 /* ChurchChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5DF82A211E57B2C500A00290 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DF82A041E57B2C500A00290 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DF82A0B1E57B2C500A00290;
+			remoteInfo = ChurchChat;
+		};
+		5DF82A2C1E57B2C500A00290 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DF82A041E57B2C500A00290 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DF82A0B1E57B2C500A00290;
+			remoteInfo = ChurchChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5DF82A111E57B2C500A00290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5DF82A141E57B2C500A00290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5DF82A161E57B2C500A00290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5DF82A191E57B2C500A00290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DF82A1B1E57B2C500A00290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DF82A201E57B2C500A00290 /* ChurchChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChurchChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DF82A241E57B2C500A00290 /* ChurchChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchChatTests.swift; sourceTree = "<group>"; };
+		5DF82A261E57B2C500A00290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DF82A2B1E57B2C500A00290 /* ChurchChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChurchChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchChatUITests.swift; sourceTree = "<group>"; };
+		5DF82A311E57B2C500A00290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5DF82A091E57B2C500A00290 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF82A1D1E57B2C500A00290 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF82A281E57B2C500A00290 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DF82A031E57B2C500A00290 = {
+			isa = PBXGroup;
+			children = (
+				5DF82A0E1E57B2C500A00290 /* ChurchChat */,
+				5DF82A231E57B2C500A00290 /* ChurchChatTests */,
+				5DF82A2E1E57B2C500A00290 /* ChurchChatUITests */,
+				5DF82A0D1E57B2C500A00290 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5DF82A0D1E57B2C500A00290 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DF82A0C1E57B2C500A00290 /* ChurchChat.app */,
+				5DF82A201E57B2C500A00290 /* ChurchChatTests.xctest */,
+				5DF82A2B1E57B2C500A00290 /* ChurchChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5DF82A0E1E57B2C500A00290 /* ChurchChat */ = {
+			isa = PBXGroup;
+			children = (
+				5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */,
+				5DF82A111E57B2C500A00290 /* ViewController.swift */,
+				5DF82A131E57B2C500A00290 /* Main.storyboard */,
+				5DF82A161E57B2C500A00290 /* Assets.xcassets */,
+				5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */,
+				5DF82A1B1E57B2C500A00290 /* Info.plist */,
+			);
+			path = ChurchChat;
+			sourceTree = "<group>";
+		};
+		5DF82A231E57B2C500A00290 /* ChurchChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				5DF82A241E57B2C500A00290 /* ChurchChatTests.swift */,
+				5DF82A261E57B2C500A00290 /* Info.plist */,
+			);
+			path = ChurchChatTests;
+			sourceTree = "<group>";
+		};
+		5DF82A2E1E57B2C500A00290 /* ChurchChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */,
+				5DF82A311E57B2C500A00290 /* Info.plist */,
+			);
+			path = ChurchChatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5DF82A0B1E57B2C500A00290 /* ChurchChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DF82A341E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChat" */;
+			buildPhases = (
+				5DF82A081E57B2C500A00290 /* Sources */,
+				5DF82A091E57B2C500A00290 /* Frameworks */,
+				5DF82A0A1E57B2C500A00290 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChurchChat;
+			productName = ChurchChat;
+			productReference = 5DF82A0C1E57B2C500A00290 /* ChurchChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5DF82A1F1E57B2C500A00290 /* ChurchChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DF82A371E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChatTests" */;
+			buildPhases = (
+				5DF82A1C1E57B2C500A00290 /* Sources */,
+				5DF82A1D1E57B2C500A00290 /* Frameworks */,
+				5DF82A1E1E57B2C500A00290 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DF82A221E57B2C500A00290 /* PBXTargetDependency */,
+			);
+			name = ChurchChatTests;
+			productName = ChurchChatTests;
+			productReference = 5DF82A201E57B2C500A00290 /* ChurchChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5DF82A2A1E57B2C500A00290 /* ChurchChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DF82A3A1E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChatUITests" */;
+			buildPhases = (
+				5DF82A271E57B2C500A00290 /* Sources */,
+				5DF82A281E57B2C500A00290 /* Frameworks */,
+				5DF82A291E57B2C500A00290 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DF82A2D1E57B2C500A00290 /* PBXTargetDependency */,
+			);
+			name = ChurchChatUITests;
+			productName = ChurchChatUITests;
+			productReference = 5DF82A2B1E57B2C500A00290 /* ChurchChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5DF82A041E57B2C500A00290 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Joel Pratt";
+				TargetAttributes = {
+					5DF82A0B1E57B2C500A00290 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Q379959Y72;
+						ProvisioningStyle = Automatic;
+					};
+					5DF82A1F1E57B2C500A00290 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Q379959Y72;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5DF82A0B1E57B2C500A00290;
+					};
+					5DF82A2A1E57B2C500A00290 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Q379959Y72;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5DF82A0B1E57B2C500A00290;
+					};
+				};
+			};
+			buildConfigurationList = 5DF82A071E57B2C500A00290 /* Build configuration list for PBXProject "ChurchChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5DF82A031E57B2C500A00290;
+			productRefGroup = 5DF82A0D1E57B2C500A00290 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5DF82A0B1E57B2C500A00290 /* ChurchChat */,
+				5DF82A1F1E57B2C500A00290 /* ChurchChatTests */,
+				5DF82A2A1E57B2C500A00290 /* ChurchChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5DF82A0A1E57B2C500A00290 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */,
+				5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */,
+				5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF82A1E1E57B2C500A00290 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF82A291E57B2C500A00290 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5DF82A081E57B2C500A00290 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DF82A121E57B2C500A00290 /* ViewController.swift in Sources */,
+				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF82A1C1E57B2C500A00290 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DF82A251E57B2C500A00290 /* ChurchChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF82A271E57B2C500A00290 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DF82A301E57B2C500A00290 /* ChurchChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5DF82A221E57B2C500A00290 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DF82A0B1E57B2C500A00290 /* ChurchChat */;
+			targetProxy = 5DF82A211E57B2C500A00290 /* PBXContainerItemProxy */;
+		};
+		5DF82A2D1E57B2C500A00290 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DF82A0B1E57B2C500A00290 /* ChurchChat */;
+			targetProxy = 5DF82A2C1E57B2C500A00290 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5DF82A131E57B2C500A00290 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5DF82A141E57B2C500A00290 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5DF82A191E57B2C500A00290 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5DF82A321E57B2C500A00290 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5DF82A331E57B2C500A00290 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5DF82A351E57B2C500A00290 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q379959Y72;
+				INFOPLIST_FILE = ChurchChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelpratt.ChurchChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5DF82A361E57B2C500A00290 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q379959Y72;
+				INFOPLIST_FILE = ChurchChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelpratt.ChurchChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5DF82A381E57B2C500A00290 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Q379959Y72;
+				INFOPLIST_FILE = ChurchChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelpratt.ChurchChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChurchChat.app/ChurchChat";
+			};
+			name = Debug;
+		};
+		5DF82A391E57B2C500A00290 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Q379959Y72;
+				INFOPLIST_FILE = ChurchChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelpratt.ChurchChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChurchChat.app/ChurchChat";
+			};
+			name = Release;
+		};
+		5DF82A3B1E57B2C500A00290 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = Q379959Y72;
+				INFOPLIST_FILE = ChurchChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelpratt.ChurchChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ChurchChat;
+			};
+			name = Debug;
+		};
+		5DF82A3C1E57B2C500A00290 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = Q379959Y72;
+				INFOPLIST_FILE = ChurchChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelpratt.ChurchChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ChurchChat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5DF82A071E57B2C500A00290 /* Build configuration list for PBXProject "ChurchChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DF82A321E57B2C500A00290 /* Debug */,
+				5DF82A331E57B2C500A00290 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DF82A341E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DF82A351E57B2C500A00290 /* Debug */,
+				5DF82A361E57B2C500A00290 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5DF82A371E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DF82A381E57B2C500A00290 /* Debug */,
+				5DF82A391E57B2C500A00290 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5DF82A3A1E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DF82A3B1E57B2C500A00290 /* Debug */,
+				5DF82A3C1E57B2C500A00290 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5DF82A041E57B2C500A00290 /* Project object */;
+}
