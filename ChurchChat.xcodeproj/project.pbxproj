@@ -14,6 +14,8 @@
 		5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */; };
 		5DF82A251E57B2C500A00290 /* ChurchChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A241E57B2C500A00290 /* ChurchChatTests.swift */; };
 		5DF82A301E57B2C500A00290 /* ChurchChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */; };
+		5DF82A3E1E57B4F300A00290 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */; };
+		85CFB2E559D69D6B3A6FA919 /* Pods_ChurchChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurchChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DF82A111E57B2C500A00290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,9 @@
 		5DF82A2B1E57B2C500A00290 /* ChurchChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChurchChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchChatUITests.swift; sourceTree = "<group>"; };
 		5DF82A311E57B2C500A00290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7E72BC9189104625E7D6125A /* Pods-ChurchChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChurchChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat.debug.xcconfig"; sourceTree = "<group>"; };
+		C51FA31CD1689D4A1FA63EBE /* Pods-ChurchChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChurchChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85CFB2E559D69D6B3A6FA919 /* Pods_ChurchChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42F0EDC2A43201BADFBF5A72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5DF82A031E57B2C500A00290 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +96,8 @@
 				5DF82A231E57B2C500A00290 /* ChurchChatTests */,
 				5DF82A2E1E57B2C500A00290 /* ChurchChatUITests */,
 				5DF82A0D1E57B2C500A00290 /* Products */,
+				8BB65EA641713F386C82A38A /* Pods */,
+				42F0EDC2A43201BADFBF5A72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +120,7 @@
 				5DF82A161E57B2C500A00290 /* Assets.xcassets */,
 				5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */,
 				5DF82A1B1E57B2C500A00290 /* Info.plist */,
+				5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */,
 			);
 			path = ChurchChat;
 			sourceTree = "<group>";
@@ -125,6 +143,15 @@
 			path = ChurchChatUITests;
 			sourceTree = "<group>";
 		};
+		8BB65EA641713F386C82A38A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E72BC9189104625E7D6125A /* Pods-ChurchChat.debug.xcconfig */,
+				C51FA31CD1689D4A1FA63EBE /* Pods-ChurchChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DF82A341E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChat" */;
 			buildPhases = (
+				836C07FFD94A4B22BF45C9CC /* [CP] Check Pods Manifest.lock */,
 				5DF82A081E57B2C500A00290 /* Sources */,
 				5DF82A091E57B2C500A00290 /* Frameworks */,
 				5DF82A0A1E57B2C500A00290 /* Resources */,
+				D709D4C9026736CB4B3F8134 /* [CP] Embed Pods Frameworks */,
+				DF8BF080342AD99E7457A27E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */,
+				5DF82A3E1E57B4F300A00290 /* GoogleService-Info.plist in Resources */,
 				5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */,
 				5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */,
 			);
@@ -256,6 +287,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		836C07FFD94A4B22BF45C9CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D709D4C9026736CB4B3F8134 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF8BF080342AD99E7457A27E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5DF82A081E57B2C500A00290 /* Sources */ = {
@@ -411,6 +490,7 @@
 		};
 		5DF82A351E57B2C500A00290 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E72BC9189104625E7D6125A /* Pods-ChurchChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q379959Y72;
@@ -424,6 +504,7 @@
 		};
 		5DF82A361E57B2C500A00290 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51FA31CD1689D4A1FA63EBE /* Pods-ChurchChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q379959Y72;
