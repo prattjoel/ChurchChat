@@ -13,4 +13,7 @@ import FirebaseGoogleAuthUI
 
 class ChatVC: UITableViewController {
     
+    // Mark: - Outlets
+    @IBOutlet weak var chatTable: UITableView!
+ 
 }
