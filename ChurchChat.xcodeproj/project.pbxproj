@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
 		5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */; };
-		5DF82A121E57B2C500A00290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A111E57B2C500A00290 /* ViewController.swift */; };
 		5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A131E57B2C500A00290 /* Main.storyboard */; };
 		5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A161E57B2C500A00290 /* Assets.xcassets */; };
 		5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */; };
@@ -37,9 +37,9 @@
 
 /* Begin PBXFileReference section */
 		2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurchChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5DF82A111E57B2C500A00290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5DF82A141E57B2C500A00290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DF82A161E57B2C500A00290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DF82A191E57B2C500A00290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,12 +115,12 @@
 			isa = PBXGroup;
 			children = (
 				5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */,
-				5DF82A111E57B2C500A00290 /* ViewController.swift */,
 				5DF82A131E57B2C500A00290 /* Main.storyboard */,
 				5DF82A161E57B2C500A00290 /* Assets.xcassets */,
 				5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */,
 				5DF82A1B1E57B2C500A00290 /* Info.plist */,
 				5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */,
+				5D5057091E58CA44000EF539 /* ChatVC.swift */,
 			);
 			path = ChurchChat;
 			sourceTree = "<group>";
@@ -341,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DF82A121E57B2C500A00290 /* ViewController.swift in Sources */,
+				5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */,
 				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +593,7 @@
 				5DF82A361E57B2C500A00290 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5DF82A371E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChatTests" */ = {
 			isa = XCConfigurationList;
@@ -601,6 +602,7 @@
 				5DF82A391E57B2C500A00290 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5DF82A3A1E57B2C500A00290 /* Build configuration list for PBXNativeTarget "ChurchChatUITests" */ = {
 			isa = XCConfigurationList;
@@ -609,6 +611,7 @@
 				5DF82A3C1E57B2C500A00290 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
