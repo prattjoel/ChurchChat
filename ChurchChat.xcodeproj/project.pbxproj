@@ -10,13 +10,13 @@
 		5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */; };
 		5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */; };
 		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
+		5D5F80211E5CEF0600AE65DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */; };
 		5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */; };
 		5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A131E57B2C500A00290 /* Main.storyboard */; };
 		5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A161E57B2C500A00290 /* Assets.xcassets */; };
 		5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */; };
 		5DF82A251E57B2C500A00290 /* ChurchChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A241E57B2C500A00290 /* ChurchChatTests.swift */; };
 		5DF82A301E57B2C500A00290 /* ChurchChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */; };
-		5DF82A3E1E57B4F300A00290 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */; };
 		85CFB2E559D69D6B3A6FA919 /* Pods_ChurchChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +42,7 @@
 		5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableDataSource.swift; sourceTree = "<group>"; };
 		5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../iOS-ND/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DF82A141E57B2C500A00290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		5DF82A2B1E57B2C500A00290 /* ChurchChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChurchChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchChatUITests.swift; sourceTree = "<group>"; };
 		5DF82A311E57B2C500A00290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7E72BC9189104625E7D6125A /* Pods-ChurchChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChurchChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C51FA31CD1689D4A1FA63EBE /* Pods-ChurchChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChurchChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +140,7 @@
 				5DF82A161E57B2C500A00290 /* Assets.xcassets */,
 				5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */,
 				5DF82A1B1E57B2C500A00290 /* Info.plist */,
-				5DF82A3D1E57B4F300A00290 /* GoogleService-Info.plist */,
+				5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */,
 				5D4970251E58DE5F00B4C3D9 /* Controller */,
 				5D4970261E58DE6900B4C3D9 /* Model */,
 			);
@@ -288,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */,
-				5DF82A3E1E57B4F300A00290 /* GoogleService-Info.plist in Resources */,
+				5D5F80211E5CEF0600AE65DD /* GoogleService-Info.plist in Resources */,
 				5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */,
 				5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */,
 			);

@@ -1,7 +1,7 @@
 # ChurchChat
 
 use_frameworks!
-platform :ios, '9.0'
+platform :ios, '10.2'
 
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
