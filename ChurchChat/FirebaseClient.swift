@@ -1,19 +1,15 @@
 //
-//  ChatVC.swift
+//  FireBaseClient.swift
 //  ChurchChat
 //
 //  Created by Joel on 2/18/17.
 //  Copyright © 2017 Joel Pratt. All rights reserved.
 //
 
-import UIKit
 import Firebase
-import FirebaseAuth
+import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 
-class ChatVC: UIViewController {
+class FirebaseClient {
     
-    // Mark: - Outlets
-    @IBOutlet weak var chatTable: UITableView!
- 
 }

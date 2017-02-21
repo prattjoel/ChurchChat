@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */; };
+		5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */; };
 		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
 		5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */; };
 		5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A131E57B2C500A00290 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurchChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableDataSource.swift; sourceTree = "<group>"; };
+		5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */,
+				5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */,
 				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
 				5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */,
+				5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
