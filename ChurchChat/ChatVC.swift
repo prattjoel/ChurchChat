@@ -20,12 +20,13 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     // MARK: - Properties
     
     let FBClient = FirebaseClient()
+    var signedIn = false
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,15 +35,20 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     }
     
     func configAUth() {
-        let authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
-        let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
-        authUI?.providers = providers
         
-        let loginVC = authUI!.authViewController()
-        self.present(loginVC, animated: true, completion: nil)
-        
-        print("\n vc called \n")
+        if !signedIn {
+            let authUI = FUIAuth.defaultAuthUI()
+            authUI?.delegate = self
+            let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
+            authUI?.providers = providers
+            
+            let loginVC = authUI!.authViewController()
+            self.present(loginVC, animated: true, completion: nil)
+            
+            signedIn = true
+            print("\n vc called \n")
+            
+        }
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
