@@ -12,6 +12,9 @@ import FirebaseGoogleAuthUI
 
 class FirebaseClient {
     
+    var dbRef: FIRDatabaseReference!
+    
+    
     // MARK: - Login
     func login() -> UINavigationController {
         let loginVC = FUIAuth.defaultAuthUI()?.authViewController()
@@ -19,9 +22,15 @@ class FirebaseClient {
         return loginVC!
     }
     
-    func databaseConfig() -> FIRDatabaseReference {
-        let DBref = FIRDatabase.database().reference()
-        
-        return DBref
+    func databaseConfig() {
+        dbRef = FIRDatabase.database().reference()
+
     }
+    
+    func sendMessage(data: [String: String]) {
+        databaseConfig()
+        dbRef.child("messages").childByAutoId().setValue(data)
+    }
+    
+    
 }

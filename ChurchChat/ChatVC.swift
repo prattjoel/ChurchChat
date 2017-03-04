@@ -22,6 +22,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     let FBClient = FirebaseClient()
     var signedIn = false
     
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -46,8 +47,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
             self.present(loginVC, animated: true, completion: nil)
             
             signedIn = true
-            print("\n vc called \n")
-            
         }
     }
     
@@ -56,4 +55,25 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
             print("error with auth: \(error)")
         }
     }
+    
+    @IBAction func sendButton(_ sender: Any) {
+        let _ = textFieldShouldReturn(chatTextField)
+        chatTextField.text = ""
+    }
+    
+    @IBOutlet weak var addImage: UIButton!
+    
+}
+
+extension ChatVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if !textField.text!.isEmpty {
+            let data = ["text": textField.text! as String]
+            FBClient.sendMessage(data: data)
+        }
+        return true
+    }
+    
 }
