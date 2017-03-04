@@ -17,6 +17,7 @@
 		5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A181E57B2C500A00290 /* LaunchScreen.storyboard */; };
 		5DF82A251E57B2C500A00290 /* ChurchChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A241E57B2C500A00290 /* ChurchChatTests.swift */; };
 		5DF82A301E57B2C500A00290 /* ChurchChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */; };
+		5DFA9C961E6B80E700B06F34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA9C951E6B80E700B06F34 /* Constants.swift */; };
 		85CFB2E559D69D6B3A6FA919 /* Pods_ChurchChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		5DF82A2B1E57B2C500A00290 /* ChurchChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChurchChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A2F1E57B2C500A00290 /* ChurchChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchChatUITests.swift; sourceTree = "<group>"; };
 		5DF82A311E57B2C500A00290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DFA9C951E6B80E700B06F34 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7E72BC9189104625E7D6125A /* Pods-ChurchChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChurchChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C51FA31CD1689D4A1FA63EBE /* Pods-ChurchChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChurchChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChurchChat/Pods-ChurchChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 			children = (
 				5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */,
 				5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */,
+				5DFA9C951E6B80E700B06F34 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DFA9C961E6B80E700B06F34 /* Constants.swift in Sources */,
 				5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */,
 				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
 				5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */,

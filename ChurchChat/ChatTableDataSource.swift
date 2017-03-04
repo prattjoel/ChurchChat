@@ -20,7 +20,13 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let id = "chatCell"
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath)
+        
+        let snapshot = messages[indexPath.row]
+        let message = snapshot.value as! [String: String]
+        
+        cell.textLabel?.text = message[Constants.text]
+        
         
         return cell
     }
