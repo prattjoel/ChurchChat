@@ -24,8 +24,10 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         
         let snapshot = messages[indexPath.row]
         let message = snapshot.value as! [String: String]
+        let text = message[Constants.text]
+        let name = message[Constants.name] ?? "username"
         
-        cell.textLabel?.text = message[Constants.text]
+        cell.textLabel?.text = name + ": " + text!
         
         
         return cell

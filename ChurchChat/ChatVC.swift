@@ -24,6 +24,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     var dbRef: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle!
     var chatDatasource = ChatTableDataSource()
+    var name = "anonymous"
     
     
     // MARK: - View Life Cycle
@@ -76,7 +77,10 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     
     func sendMessage(data: [String: String]) {
         
-        dbRef.child(Constants.messages).childByAutoId().setValue(data)
+        var messageData = data
+        messageData[Constants.name] = name
+        
+        dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
     }
     
     func seeBottomMsg() {
