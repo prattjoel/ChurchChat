@@ -30,6 +30,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        databaseConfig()
         
     }
     
@@ -74,7 +75,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     //MARK: - Sending and receiving messages
     
     func sendMessage(data: [String: String]) {
-        databaseConfig()
+        
         dbRef.child(Constants.messages).childByAutoId().setValue(data)
     }
     
