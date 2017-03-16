@@ -20,10 +20,11 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     // MARK: - Properties
     
     let FBClient = FirebaseClient()
-    var signedIn = false
     var dbRef: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle!
     var chatDatasource = ChatTableDataSource()
+    var authListener: FIRAuthStateDidChangeListenerHandle!
+    var user: FIRUser!
     var name = "anonymous"
     
     
@@ -31,35 +32,44 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseConfig()
+        chatTable.dataSource = chatDatasource
+        configAuth()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        configAUth()
-        chatTable.dataSource = chatDatasource
-    }
+
     
     deinit {
         dbRef.child(Constants.messages).removeObserver(withHandle: dbHandle)
+        FIRAuth.auth()?.removeStateDidChangeListener(authListener)
     }
     
     // MARK: - Configurations for Firebase
     
-    func configAUth() {
+    func configAuth() {
         
-        if !signedIn {
-            let authUI = FUIAuth.defaultAuthUI()
-            authUI?.delegate = self
-            let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
-            authUI?.providers = providers
+        let authUI = FUIAuth.defaultAuthUI()
+        authUI?.delegate = self
+        let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
+        authUI?.providers = providers
+        
+        authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
             
-            let loginVC = authUI!.authViewController()
-            self.present(loginVC, animated: true, completion: nil)
+            self.chatDatasource.messages.removeAll(keepingCapacity: false)
+            self.chatTable.reloadData()
             
-            signedIn = true
-        }
+            if let currentUser = user {
+                if self.user != currentUser {
+                    self.user = currentUser
+                    self.name = user!.email!.components(separatedBy: "@")[0]
+                    self.databaseConfig()
+                }
+            } else {
+                let loginVC = authUI!.authViewController()
+                self.present(loginVC, animated: true, completion: nil)
+            }
+        })
+        
     }
     
     func databaseConfig() {
