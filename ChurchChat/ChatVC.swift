@@ -11,11 +11,13 @@ import Firebase
 import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 
-class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate {
+class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     // Mark: - Outlets
     @IBOutlet weak var chatTextField: UITextField!
     @IBOutlet weak var chatTable: UITableView!
+    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var signInButton: UIBarButtonItem!
     
     // MARK: - Properties
     
@@ -25,6 +27,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     var chatDatasource = ChatTableDataSource()
     var authListener: FIRAuthStateDidChangeListenerHandle!
     var user: FIRUser!
+    var authUI: FUIAuth!
     var name = "anonymous"
     
     
@@ -37,7 +40,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
         
     }
     
-
+    
     
     deinit {
         dbRef.child(Constants.messages).removeObserver(withHandle: dbHandle)
@@ -48,8 +51,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
     
     func configAuth() {
         
-        let authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
+        authUI = FUIAuth.defaultAuthUI()
+        //        authUI?.delegate = self
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
         
@@ -63,10 +66,12 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
                     self.user = currentUser
                     self.name = user!.email!.components(separatedBy: "@")[0]
                     self.databaseConfig()
+                    self.isSignedIn(signedIn: true)
                 }
             } else {
-                let loginVC = authUI!.authViewController()
-                self.present(loginVC, animated: true, completion: nil)
+                self.presentLogin()
+                self.isSignedIn(signedIn: false)
+                
             }
         })
         
@@ -98,17 +103,35 @@ class ChatVC: UIViewController, UINavigationControllerDelegate, FUIAuthDelegate 
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
     }
     
-    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
-        if error != nil {
-            print("error with auth: \(error)")
+    func presentLogin() {
+        let loginVC = authUI!.authViewController()
+        self.present(loginVC, animated: true, completion: nil)
+    }
+    
+    func isSignedIn(signedIn: Bool) {
+        
+        messageButton.isEnabled = signedIn
+        addImage.isEnabled = signedIn
+        chatTextField.isEnabled = signedIn
+        if signedIn {
+            signInButton.isEnabled = false
         }
     }
+    
+    //    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
+    //        if error != nil {
+    //            print("error with auth: \(error)")
+    //        }
+    //    }
     
     @IBAction func sendButton(_ sender: Any) {
         let _ = textFieldShouldReturn(chatTextField)
         chatTextField.text = ""
     }
     
+    @IBAction func signIn(_ sender: Any) {
+        presentLogin()
+    }
     @IBOutlet weak var addImage: UIButton!
     
 }
