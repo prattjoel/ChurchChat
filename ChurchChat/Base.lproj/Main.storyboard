@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6I-XY-G0G" id="ld6-88-25p">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fci-cL-ECL">
@@ -72,6 +72,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="7bS-44-7tC">
+                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="4o5-6b-LeA">
+                                            <connections>
+                                                <action selector="signOut:" destination="BYZ-38-t0r" id="Gjx-lG-D8T"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Sign In" id="Vkn-eH-tSm">
                                             <connections>
                                                 <action selector="signIn:" destination="BYZ-38-t0r" id="cz6-0u-43m"/>
@@ -103,6 +108,7 @@
                         <outlet property="chatTextField" destination="Qng-sb-z13" id="s4C-U6-faQ"/>
                         <outlet property="messageButton" destination="Tz3-FN-Zwq" id="va6-m4-9HW"/>
                         <outlet property="signInButton" destination="Vkn-eH-tSm" id="gqp-MG-TP0"/>
+                        <outlet property="signOutButton" destination="4o5-6b-LeA" id="eX9-CE-fF4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

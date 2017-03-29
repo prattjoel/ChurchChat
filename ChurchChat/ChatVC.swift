@@ -17,7 +17,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var chatTextField: UITextField!
     @IBOutlet weak var chatTable: UITableView!
     @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var addImage: UIButton!
     @IBOutlet weak var signInButton: UIBarButtonItem!
+    @IBOutlet weak var signOutButton: UIBarButtonItem!
     
     // MARK: - Properties
     
@@ -113,16 +115,14 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         messageButton.isEnabled = signedIn
         addImage.isEnabled = signedIn
         chatTextField.isEnabled = signedIn
+        signOutButton.isEnabled = signedIn
         if signedIn {
             signInButton.isEnabled = false
+        } else {
+            signInButton.isEnabled = true
         }
     }
     
-    //    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
-    //        if error != nil {
-    //            print("error with auth: \(error)")
-    //        }
-    //    }
     
     @IBAction func sendButton(_ sender: Any) {
         let _ = textFieldShouldReturn(chatTextField)
@@ -132,7 +132,16 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @IBAction func signIn(_ sender: Any) {
         presentLogin()
     }
-    @IBOutlet weak var addImage: UIButton!
+    
+    @IBAction func signOut(_ sender: Any) {
+        
+        let auth = FIRAuth.auth()
+        do {
+            try auth?.signOut()
+        } catch let errorForSignOut as NSError {
+            print("Error signing out: \(errorForSignOut)")
+        }
+    }
     
 }
 
