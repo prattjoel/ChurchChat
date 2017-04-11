@@ -55,7 +55,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     func configAuth() {
         
         authUI = FUIAuth.defaultAuthUI()
-        //        authUI?.delegate = self
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
         
