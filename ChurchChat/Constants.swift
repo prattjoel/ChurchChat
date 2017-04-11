@@ -12,4 +12,5 @@ struct Constants {
     static let text = "text"
     static let messages = "messages"
     static let name = "name"
+    static let photoUrl = "photoUrl"
 }

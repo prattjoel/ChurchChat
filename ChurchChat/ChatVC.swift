@@ -25,6 +25,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     let FBClient = FirebaseClient()
     var dbRef: FIRDatabaseReference!
+    var storageRef: FIRStorageReference!
     var dbHandle: FIRDatabaseHandle!
     var chatDatasource = ChatTableDataSource()
     var authListener: FIRAuthStateDidChangeListenerHandle!
@@ -68,6 +69,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
                     self.user = currentUser
                     self.name = user!.email!.components(separatedBy: "@")[0]
                     self.databaseConfig()
+                    self.storageConfig()
                     self.isSignedIn(signedIn: true)
                 }
             } else {
@@ -90,6 +92,10 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         
     }
     
+    func storageConfig() {
+        storageRef = FIRStorage.storage().reference()
+    }
+    
     //MARK: - Sending and receiving messages
     
     func sendMessage(data: [String: String]) {
@@ -100,11 +106,28 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
     }
     
+    func sendPhoto(data: Data) {
+        let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jeg"
+        
+        storageRef.child(photoPath).put(data, metadata: metadata) {(metadata, error) in
+            if let error = error {
+                print("error adding image to storage: \(error)")
+                return
+            }
+            
+            self.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
+        }
+    }
+    
     func seeBottomMsg() {
         let bottomIndex = IndexPath(row: (chatDatasource.messages.count-1), section: 0)
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
     }
     
+    
+    // MARK: Login
     func presentLogin() {
         let loginVC = authUI!.authViewController()
         self.present(loginVC, animated: true, completion: nil)
@@ -123,6 +146,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    // MARK: Actions
     
     @IBAction func sendButton(_ sender: Any) {
         let _ = textFieldShouldReturn(chatTextField)
@@ -143,7 +167,23 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    @IBAction func addPhoto(_ sender: Any) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            
+            present(picker, animated: true, completion: nil)
+        } else {
+            print("photo library not available")
+        }
+    }
+    
 }
+
+// MARK: - ChatVC: UITextFieldDelegate
 
 extension ChatVC: UITextFieldDelegate {
     
@@ -157,4 +197,21 @@ extension ChatVC: UITextFieldDelegate {
         return true
     }
     
+}
+
+// MARK: - ChatVC: UIImagePickerControllerDelegate
+extension ChatVC: UIImagePickerControllerDelegate {
+    // MARK: - Image Piicker Functions
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let photo = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(photo, 0.8) {
+            sendPhoto(data: photoData)
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

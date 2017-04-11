@@ -57,6 +57,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndG-f0-zhr">
                                 <rect key="frame" x="0.0" y="637" width="42" height="30"/>
                                 <state key="normal" title="Image"/>
+                                <connections>
+                                    <action selector="addPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ozr-iU-YH0"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qng-sb-z13">
                                 <rect key="frame" x="44" y="637" width="292" height="30"/>
