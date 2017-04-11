@@ -43,6 +43,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         
     }
     
+    // Remove Listener
+    
     deinit {
         dbRef.child(Constants.messages).removeObserver(withHandle: dbHandle)
         FIRAuth.auth()?.removeStateDidChangeListener(authListener)
