@@ -15,11 +15,11 @@ class FirebaseClient {
     var dbRef: FIRDatabaseReference!
     var storageRef: FIRStorageReference!
     var dbHandle: FIRDatabaseHandle!
-//    var chatDatasource = ChatTableDataSource()
     var authListener: FIRAuthStateDidChangeListenerHandle!
     var user: FIRUser!
-   // var authUI: FUIAuth!
     var name = "anonymous"
+    var authUI: FUIAuth!
+
     
     
     // MARK: - Login
@@ -34,9 +34,9 @@ class FirebaseClient {
 //
 //    }
     
-    func configAuth(authUI: FUIAuth?, chatDataSource: ChatTableDataSource, chatTable: UITableView, completion: @escaping (Bool)->Void) {
+    func configAuth(chatDataSource: ChatTableDataSource, chatTable: UITableView, completion: @escaping (Bool)->Void) {
         
-       // authUI = FUIAuth.defaultAuthUI()
+       authUI = FUIAuth.defaultAuthUI()
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
         
