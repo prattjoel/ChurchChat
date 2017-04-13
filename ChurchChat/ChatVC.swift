@@ -39,7 +39,19 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
-        configAuth()
+        //configAuth()
+        
+        authUI = FUIAuth.defaultAuthUI()
+        
+        FBClient.configAuth(authUI: authUI, chatDataSource: chatDatasource, chatTable: chatTable) { completion in
+            if completion {
+                
+                    print("signed in")
+                
+            } else {
+                self.presentLogin()
+            }
+        }
         
     }
     
@@ -67,7 +79,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
                 if self.user != currentUser {
                     self.user = currentUser
                     self.name = user!.email!.components(separatedBy: "@")[0]
-                    self.databaseConfig()
+                    self.FBClient.databaseConfig(chatDataSource: self.chatDatasource, chatTable: self.chatTable)
+                   // self.seeBottomMsg()
                     self.storageConfig()
                     self.isSignedIn(signedIn: true)
                 }
@@ -80,16 +93,16 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         
     }
     
-    func databaseConfig() {
-        dbRef = FIRDatabase.database().reference()
-        dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
-            
-            self.chatDatasource.messages.append(snapshot)
-            self.chatTable.insertRows(at: [IndexPath(row: self.chatDatasource.messages.count - 1, section: 0)], with: .automatic)
-            self.seeBottomMsg()
-        })
-        
-    }
+//    func databaseConfig() {
+//        dbRef = FIRDatabase.database().reference()
+//        dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
+//            
+//            self.chatDatasource.messages.append(snapshot)
+//            self.chatTable.insertRows(at: [IndexPath(row: self.chatDatasource.messages.count - 1, section: 0)], with: .automatic)
+//            self.seeBottomMsg()
+//        })
+//        
+//    }
     
     func storageConfig() {
         storageRef = FIRStorage.storage().reference()
@@ -97,13 +110,13 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     //MARK: - Sending and receiving messages
     
-    func sendMessage(data: [String: String]) {
-        
-        var messageData = data
-        messageData[Constants.name] = name
-        
-        dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
-    }
+//    func sendMessage(data: [String: String]) {
+//        
+//        var messageData = data
+//        messageData[Constants.name] = name
+//        
+//        dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
+//    }
     
     func sendPhoto(data: Data) {
         let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
@@ -116,7 +129,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
                 return
             }
             
-            self.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
+            self.FBClient.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
         }
     }
     
@@ -190,7 +203,7 @@ extension ChatVC: UITextFieldDelegate {
         
         if !textField.text!.isEmpty {
             let data = [Constants.text: textField.text! as String]
-            sendMessage(data: data)
+            FBClient.sendMessage(data: data)
             
         }
         return true
@@ -204,7 +217,7 @@ extension ChatVC: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let photo = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(photo, 0.8) {
-            sendPhoto(data: photoData)
+            FBClient.sendPhoto(data: photoData)
         }
         
         picker.dismiss(animated: true, completion: nil)
