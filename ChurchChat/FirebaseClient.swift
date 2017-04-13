@@ -50,10 +50,10 @@ class FirebaseClient {
                     self.user = currentUser
                     self.name = user!.email!.components(separatedBy: "@")[0]
                     self.databaseConfig(chatDataSource: chatDataSource, chatTable: chatTable)
-                    // self.seeBottomMsg()
+                    
                     self.storageConfig()
                    // self.isSignedIn(signedIn: true)
-                    completion(false)
+                    completion(true)
                 }
             } else {
                 completion(false)
@@ -71,6 +71,7 @@ class FirebaseClient {
             
             chatDataSource.messages.append(snapshot)
             chatTable.insertRows(at: [IndexPath(row: chatDataSource.messages.count - 1, section: 0)], with: .automatic)
+            self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable)
 //            self.seeBottomMsg()
         })
         
@@ -101,6 +102,11 @@ class FirebaseClient {
             
             self.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
         }
+    }
+    
+    func seeBottomMsg(chatDataSource: ChatTableDataSource, chatTable: UITableView) {
+        let bottomIndex = IndexPath(row: (chatDataSource.messages.count-1), section: 0)
+        chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
     }
     
 //    func presentLogin() {

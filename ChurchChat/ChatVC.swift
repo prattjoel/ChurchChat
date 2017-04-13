@@ -46,10 +46,13 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         FBClient.configAuth(authUI: authUI, chatDataSource: chatDatasource, chatTable: chatTable) { completion in
             if completion {
                 
-                    print("signed in")
+                    print("\n User signed in successsfully \n")
+                self.isSignedIn(signedIn: true)
+                //self.seeBottomMsg()
                 
             } else {
                 self.presentLogin()
+                self.isSignedIn(signedIn: false)
             }
         }
         
@@ -64,34 +67,34 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - Configurations for Firebase
     
-    func configAuth() {
-        
-        authUI = FUIAuth.defaultAuthUI()
-        let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
-        authUI?.providers = providers
-        
-        authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
-            
-            self.chatDatasource.messages.removeAll(keepingCapacity: false)
-            self.chatTable.reloadData()
-            
-            if let currentUser = user {
-                if self.user != currentUser {
-                    self.user = currentUser
-                    self.name = user!.email!.components(separatedBy: "@")[0]
-                    self.FBClient.databaseConfig(chatDataSource: self.chatDatasource, chatTable: self.chatTable)
-                   // self.seeBottomMsg()
-                    self.storageConfig()
-                    self.isSignedIn(signedIn: true)
-                }
-            } else {
-                self.presentLogin()
-                self.isSignedIn(signedIn: false)
-                
-            }
-        })
-        
-    }
+//    func configAuth() {
+//        
+//        authUI = FUIAuth.defaultAuthUI()
+//        let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
+//        authUI?.providers = providers
+//        
+//        authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
+//            
+//            self.chatDatasource.messages.removeAll(keepingCapacity: false)
+//            self.chatTable.reloadData()
+//            
+//            if let currentUser = user {
+//                if self.user != currentUser {
+//                    self.user = currentUser
+//                    self.name = user!.email!.components(separatedBy: "@")[0]
+//                    self.FBClient.databaseConfig(chatDataSource: self.chatDatasource, chatTable: self.chatTable)
+//                   // self.seeBottomMsg()
+//                    self.storageConfig()
+//                    self.isSignedIn(signedIn: true)
+//                }
+//            } else {
+//                self.presentLogin()
+//                self.isSignedIn(signedIn: false)
+//                
+//            }
+//        })
+//        
+//    }
     
 //    func databaseConfig() {
 //        dbRef = FIRDatabase.database().reference()
@@ -103,11 +106,11 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
 //        })
 //        
 //    }
-    
-    func storageConfig() {
-        storageRef = FIRStorage.storage().reference()
-    }
-    
+//    
+//    func storageConfig() {
+//        storageRef = FIRStorage.storage().reference()
+//    }
+//    
     //MARK: - Sending and receiving messages
     
 //    func sendMessage(data: [String: String]) {
@@ -118,20 +121,20 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
 //        dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
 //    }
     
-    func sendPhoto(data: Data) {
-        let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
-        let metadata = FIRStorageMetadata()
-        metadata.contentType = "image/jeg"
-        
-        storageRef.child(photoPath).put(data, metadata: metadata) {(metadata, error) in
-            if let error = error {
-                print("error adding image to storage: \(error)")
-                return
-            }
-            
-            self.FBClient.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
-        }
-    }
+//    func sendPhoto(data: Data) {
+//        let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+//        let metadata = FIRStorageMetadata()
+//        metadata.contentType = "image/jeg"
+//        
+//        storageRef.child(photoPath).put(data, metadata: metadata) {(metadata, error) in
+//            if let error = error {
+//                print("error adding image to storage: \(error)")
+//                return
+//            }
+//            
+//            self.FBClient.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
+//        }
+//    }
     
     func seeBottomMsg() {
         let bottomIndex = IndexPath(row: (chatDatasource.messages.count-1), section: 0)
