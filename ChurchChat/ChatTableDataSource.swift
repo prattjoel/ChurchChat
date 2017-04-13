@@ -24,11 +24,28 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         
         let snapshot = messages[indexPath.row]
         let message = snapshot.value as! [String: String]
-        let text = message[Constants.text]
         let name = message[Constants.name] ?? "username"
         
-        cell.textLabel?.text = name + ": " + text!
-        
+        if let photoUrl = message[Constants.photoUrl] {
+            cell.textLabel?.text = "From: \(name)"
+            FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
+                guard error == nil else {
+                    print("erro downloading image from photUrl: \(error)")
+                    return
+                }
+                
+                let messagePhoto = UIImage.init(data: data!, scale: 50)
+                if cell == tableView.cellForRow(at: indexPath) {
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = messagePhoto
+                        cell.setNeedsLayout()
+                    }
+                }
+            })
+        } else {
+            let text = message[Constants.text] ?? "[message]"
+            cell.textLabel?.text = name + ": " + text
+        }
         
         return cell
     }
