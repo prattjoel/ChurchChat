@@ -12,6 +12,8 @@ import FirebaseGoogleAuthUI
 
 class FirebaseClient {
     
+    // MARK: Properties
+    
     var dbRef: FIRDatabaseReference!
     var storageRef: FIRStorageReference!
     var dbHandle: FIRDatabaseHandle!
@@ -19,24 +21,14 @@ class FirebaseClient {
     var user: FIRUser!
     var name = "anonymous"
     var authUI: FUIAuth!
-
     
     
-    // MARK: - Login
-    func login() -> UINavigationController {
-        let loginVC = FUIAuth.defaultAuthUI()?.authViewController()
-        
-        return loginVC!
-    }
     
-//    func databaseConfig() {
-//        dbRef = FIRDatabase.database().reference()
-//
-//    }
+    // MARK: - Firebase Config Methods
     
     func configAuth(chatDataSource: ChatTableDataSource, chatTable: UITableView, completion: @escaping (Bool)->Void) {
         
-       authUI = FUIAuth.defaultAuthUI()
+        authUI = FUIAuth.defaultAuthUI()
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
         
@@ -52,13 +44,10 @@ class FirebaseClient {
                     self.databaseConfig(chatDataSource: chatDataSource, chatTable: chatTable)
                     
                     self.storageConfig()
-                   // self.isSignedIn(signedIn: true)
                     completion(true)
                 }
             } else {
                 completion(false)
-               // self.presentLogin()
-               // self.isSignedIn(signedIn: false)
                 
             }
         })
@@ -72,7 +61,6 @@ class FirebaseClient {
             chatDataSource.messages.append(snapshot)
             chatTable.insertRows(at: [IndexPath(row: chatDataSource.messages.count - 1, section: 0)], with: .automatic)
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable)
-//            self.seeBottomMsg()
         })
         
     }
@@ -81,6 +69,8 @@ class FirebaseClient {
         storageRef = FIRStorage.storage().reference()
     }
     
+    // MARK: - Firebase Data sending methods
+    
     func sendMessage(data: [String: String]) {
         
         var messageData = data
@@ -88,6 +78,7 @@ class FirebaseClient {
         
         dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
     }
+    
     
     func sendPhoto(data: Data) {
         let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
@@ -109,9 +100,5 @@ class FirebaseClient {
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
     }
     
-//    func presentLogin() {
-//        let loginVC = authUI!.authViewController()
-//        self.present(loginVC, animated: true, completion: nil)
-//    }
     
 }

@@ -25,7 +25,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     let FBClient = FirebaseClient()
     var chatDatasource = ChatTableDataSource()
-
+    
     
     
     // MARK: - View Life Cycle
@@ -33,14 +33,15 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
+        chatTextField.delegate = self
         //configAuth()
         
-       // authUI = FUIAuth.defaultAuthUI()
+        // authUI = FUIAuth.defaultAuthUI()
         
         FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable) { completion in
             if completion {
                 
-                    print("\n User signed in successsfully \n")
+                print("\n User signed in successsfully \n")
                 self.isSignedIn(signedIn: true)
                 //self.seeBottomMsg()
                 
@@ -58,13 +59,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         FBClient.dbRef.child(Constants.messages).removeObserver(withHandle: FBClient.dbHandle)
         FIRAuth.auth()?.removeStateDidChangeListener(FBClient.authListener)
         print("\n listener and observer removed \n")
-        
-//        dbRef.child(Constants.messages).removeObserver(withHandle: dbHandle)
-//        FIRAuth.auth()?.removeStateDidChangeListener(authListener)
-//        print("\n listener and observer removed \n")
     }
     
-
+    
     
     // MARK: Login
     func presentLogin() {
@@ -89,7 +86,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func sendButton(_ sender: Any) {
         let _ = textFieldShouldReturn(chatTextField)
-        chatTextField.text = ""
+        
     }
     
     @IBAction func signIn(_ sender: Any) {
@@ -131,7 +128,8 @@ extension ChatVC: UITextFieldDelegate {
         if !textField.text!.isEmpty {
             let data = [Constants.text: textField.text! as String]
             FBClient.sendMessage(data: data)
-            
+            textField.resignFirstResponder()
+            chatTextField.text = ""
         }
         return true
     }
@@ -140,6 +138,7 @@ extension ChatVC: UITextFieldDelegate {
 
 // MARK: - ChatVC: UIImagePickerControllerDelegate
 extension ChatVC: UIImagePickerControllerDelegate {
+    
     // MARK: - Image Piicker Functions
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -153,4 +152,6 @@ extension ChatVC: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }
+
