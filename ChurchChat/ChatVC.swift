@@ -25,6 +25,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     let FBClient = FirebaseClient()
     var chatDatasource = ChatTableDataSource()
+    var keyboardIsVisible = false
     
     
     
@@ -34,6 +35,14 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
         chatTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        //            NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        //            NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        
+        
+        
         //configAuth()
         
         // authUI = FUIAuth.defaultAuthUI()
@@ -50,6 +59,15 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
                 self.isSignedIn(signedIn: false)
             }
         }
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+        //  NotificationCenter.default.removeObserver(self)
+        
         
     }
     
@@ -77,6 +95,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         signOutButton.isEnabled = signedIn
         if signedIn {
             signInButton.isEnabled = false
+
         } else {
             signInButton.isEnabled = true
         }
@@ -133,6 +152,65 @@ extension ChatVC: UITextFieldDelegate {
         }
         return true
     }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        
+        if !keyboardIsVisible {
+            
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                
+                self.view.frame.origin.y -= keyboardSize.height
+                
+                keyboardIsVisible = true
+                
+            }
+        } else {
+            print("keyboard on screen")
+        }
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        
+        if keyboardIsVisible {
+            
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                
+                self.view.frame.origin.y += keyboardSize.height
+                
+                keyboardIsVisible = false
+                //chatTextField.resignFirstResponder()
+                
+            } else {
+                print("no keyboard")
+            }
+        }
+    }
+    
+    
+    //
+    //    func keyboardWillShow(_ notification: Notification) {
+    //        if !keyboardIsVisible {
+    //            view.frame.origin.y -= keyboardHeight(notification)
+    //        }
+    //    }
+    //
+    //    func keyboardWillHide(_ notification: Notification) {
+    //        if keyboardIsVisible {
+    //            view.frame.origin.y += keyboardHeight(notification)
+    //        }
+    //    }
+    
+//    func keyboardDidShow(_ notification: Notification) {
+//        keyboardIsVisible = true
+//    }
+//    
+//    func keyboardDidHide(_ notification: Notification) {
+//        keyboardIsVisible = false
+//    }
+    //
+    //    func keyboardHeight(_ notification: Notification) -> CGFloat {
+    //        return((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.height
+    //    }
     
 }
 
