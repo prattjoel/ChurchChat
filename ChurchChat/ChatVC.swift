@@ -155,35 +155,46 @@ extension ChatVC: UITextFieldDelegate {
     
     func keyboardWillShow(_ notification: Notification) {
         
-        if !keyboardIsVisible {
+       print("keyboard shown")
             
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 
+                if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
                 
-                keyboardIsVisible = true
+              //  keyboardIsVisible = true
+                }
                 
             }
-        } else {
-            print("keyboard on screen")
-        }
     }
     
     func keyboardWillHide(_ notification: Notification) {
         
-        if keyboardIsVisible {
+   
             
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                
+                if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
                 
-                keyboardIsVisible = false
+               // keyboardIsVisible = false
+                }
                 //chatTextField.resignFirstResponder()
                 
-            } else {
-                print("no keyboard")
-            }
         }
+        
+//        if keyboardIsVisible {
+//            
+//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//                
+//                self.view.frame.origin.y += keyboardSize.height
+//                
+//                keyboardIsVisible = false
+//                //chatTextField.resignFirstResponder()
+//                
+//            } else {
+//                print("no keyboard")
+//            }
+//        }
     }
     
     
