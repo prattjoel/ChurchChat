@@ -20,6 +20,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var addImage: UIButton!
     @IBOutlet weak var signInButton: UIBarButtonItem!
     @IBOutlet weak var signOutButton: UIBarButtonItem!
+    @IBOutlet var keyboardDismissTapGesture: UITapGestureRecognizer!
     
     // MARK: - Properties
     
@@ -93,6 +94,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         addImage.isEnabled = signedIn
         chatTextField.isEnabled = signedIn
         signOutButton.isEnabled = signedIn
+        keyboardDismissTapGesture.isEnabled = false
         if signedIn {
             signInButton.isEnabled = false
 
@@ -107,6 +109,13 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         let _ = textFieldShouldReturn(chatTextField)
         
     }
+    
+    @IBAction func dismissKeyboardOnScreenTap(_ sender: Any) {
+        
+        chatTextField.resignFirstResponder()
+        
+    }
+    
     
     @IBAction func signIn(_ sender: Any) {
         presentLogin()
@@ -156,6 +165,8 @@ extension ChatVC: UITextFieldDelegate {
     func keyboardWillShow(_ notification: Notification) {
         
        print("keyboard shown")
+        
+        keyboardDismissTapGesture.isEnabled = true
             
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 
@@ -169,6 +180,7 @@ extension ChatVC: UITextFieldDelegate {
     }
     
     func keyboardWillHide(_ notification: Notification) {
+        keyboardDismissTapGesture.isEnabled = false
         
    
             

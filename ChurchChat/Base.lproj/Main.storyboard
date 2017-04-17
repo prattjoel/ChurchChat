@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6I-XY-G0G" id="ld6-88-25p">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fci-cL-ECL">
@@ -90,6 +90,7 @@
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SOh-U4-8oN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FC4-oR-qIG"/>
                             <constraint firstItem="SOh-U4-8oN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="Gi8-pG-tgg"/>
@@ -104,17 +105,26 @@
                             <constraint firstItem="Tz3-FN-Zwq" firstAttribute="leading" secondItem="Qng-sb-z13" secondAttribute="trailing" constant="1" id="yng-ZK-4Yx"/>
                             <constraint firstItem="SOh-U4-8oN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="yoA-Hg-an1"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Kpf-Nw-CdG" appends="YES" id="lM9-Iu-ppz"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addImage" destination="ndG-f0-zhr" id="3jy-Kq-O9k"/>
                         <outlet property="chatTable" destination="SOh-U4-8oN" id="snH-uw-Ahy"/>
                         <outlet property="chatTextField" destination="Qng-sb-z13" id="s4C-U6-faQ"/>
+                        <outlet property="keyboardDismissTapGesture" destination="Kpf-Nw-CdG" id="7kf-vL-0v9"/>
                         <outlet property="messageButton" destination="Tz3-FN-Zwq" id="va6-m4-9HW"/>
                         <outlet property="signInButton" destination="Vkn-eH-tSm" id="gqp-MG-TP0"/>
                         <outlet property="signOutButton" destination="4o5-6b-LeA" id="eX9-CE-fF4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Kpf-Nw-CdG">
+                    <connections>
+                        <action selector="dismissKeyboardOnScreenTap:" destination="BYZ-38-t0r" id="nzA-YX-bhW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="147.97601199400302"/>
         </scene>
