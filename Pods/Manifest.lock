@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Eureka (3.0.0)
   - Fabric (1.6.11)
   - FBSDKCoreKit (4.22.0):
     - Bolts (~> 1.7)
@@ -114,6 +115,7 @@ PODS:
     - TwitterCore (>= 2.8)
 
 DEPENDENCIES:
+  - Eureka
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -124,6 +126,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
@@ -146,6 +149,6 @@ SPEC CHECKSUMS:
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 
-PODFILE CHECKSUM: dbd776f2ea866a98cc550fde12e2756e5074f689
+PODFILE CHECKSUM: 30ff104a59aae0b184664f698d519bf0d0e21ff1
 
 COCOAPODS: 1.2.0

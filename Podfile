@@ -10,6 +10,7 @@ pod 'Firebase/Messaging'
 pod 'Firebase/RemoteConfig'
 pod 'Firebase/Storage'
 pod 'FirebaseUI'
+pod 'Eureka'
 
 target 'ChurchChat' do
 
