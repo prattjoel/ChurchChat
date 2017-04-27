@@ -46,6 +46,23 @@ FOUNDATION_EXPORT const unsigned char *const FirebaseStorageVersionString;
 + (instancetype)storageForApp:(FIRApp *)app NS_SWIFT_NAME(storage(app:));
 
 /**
+ * Creates an instance of FIRStorage, configured with a custom storage bucket @a url.
+ * @param url The gs:// url to your Firebase Storage Bucket.
+ * @return the FIRStorage instance, initialized with the custom FIRApp.
+ */
++ (instancetype)storageWithURL:(NSString *)url NS_SWIFT_NAME(storage(url:));
+
+/**
+ * Creates an instance of FIRStorage, configured with a custom FIRApp @a app and a custom storage
+ * bucket @a url.
+ * @param app The custom FIRApp used for initialization.
+ * @param url The gs:// url to your Firebase Storage Bucket.
+ * @return the FIRStorage instance, initialized with the custom FIRApp.
+ */
++ (instancetype)storageForApp:(FIRApp *)app
+                          URL:(NSString *)url NS_SWIFT_NAME(storage(app:url:));
+
+/**
  * The Firebase App associated with this Firebase Storage instance.
  */
 @property(strong, nonatomic, readonly) FIRApp *app;
