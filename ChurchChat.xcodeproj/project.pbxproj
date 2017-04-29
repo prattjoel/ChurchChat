@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D2CDF8E1EB4E8C600754764 /* CommunicationFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CDF8D1EB4E8C600754764 /* CommunicationFormVC.swift */; };
 		5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */; };
 		5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */; };
 		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurchChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D2CDF8D1EB4E8C600754764 /* CommunicationFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationFormVC.swift; sourceTree = "<group>"; };
 		5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableDataSource.swift; sourceTree = "<group>"; };
 		5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5D5057091E58CA44000EF539 /* ChatVC.swift */,
+				5D2CDF8D1EB4E8C600754764 /* CommunicationFormVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				5DFA9C961E6B80E700B06F34 /* Constants.swift in Sources */,
 				5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */,
 				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
+				5D2CDF8E1EB4E8C600754764 /* CommunicationFormVC.swift in Sources */,
 				5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */,
 				5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */,
 			);

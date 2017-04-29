@@ -30,7 +30,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
             cell.textLabel?.text = "From: \(name)"
             FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
                 guard error == nil else {
-                    print("erro downloading image from photUrl: \(error)")
+                    print("erro downloading image from photUrl: \(String(describing: error))")
                     return
                 }
                 
