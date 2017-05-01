@@ -109,7 +109,7 @@
                             <outletCollection property="gestureRecognizers" destination="Kpf-Nw-CdG" appends="YES" id="lM9-Iu-ppz"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ffn-0i-vj8"/>
+                    <tabBarItem key="tabBarItem" title="Chat" id="ffn-0i-vj8"/>
                     <connections>
                         <outlet property="addImage" destination="ndG-f0-zhr" id="3jy-Kq-O9k"/>
                         <outlet property="chatTable" destination="SOh-U4-8oN" id="snH-uw-Ahy"/>
@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Dvd-NK-at4"/>
+                    <tabBarItem key="tabBarItem" title="Contact" id="Dvd-NK-at4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jt8-mR-KzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,6 +154,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kZp-cs-XIY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bDl-6I-JaF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
