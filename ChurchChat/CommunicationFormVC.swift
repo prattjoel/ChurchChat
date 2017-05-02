@@ -10,23 +10,17 @@ import Eureka
 
 class CommunicationFormVC: FormViewController {
     
+    var name: TextRow?
+    var email: EmailRow?
+    var message: TextAreaRow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem?.target = self
+        navigationItem.rightBarButtonItem?.action = #selector(sendContactInfo)
         setupForm()
-//        form +++ Section("Section1")
-//            <<< TextRow(){ row in
-//                row.title = "Name"
-//                row.placeholder = "Enter text here"
-//            }
-//            <<< PhoneRow(){
-//                $0.title = "Phone Number"
-//                $0.placeholder = "And numbers here"
-//            }
-//            +++ Section("Section2")
-//            <<< DateRow(){
-//                $0.title = "Date Row"
-//                $0.value = Date(timeIntervalSinceReferenceDate: 0)
-//        }
+        
     }
     
     func setupForm() {
@@ -34,16 +28,39 @@ class CommunicationFormVC: FormViewController {
             <<< TextRow(){ row in
                 row.title = "Name"
                 row.placeholder = "Enter name here"
-        }
+                self.name = row
+            }
             <<< EmailRow(){
                 $0.title = "Email"
                 $0.placeholder = "Enter email here"
-        }
-        
-        +++ Section("Communication")
+                self.email = $0
+            }
+            
+            +++ Section("Communication")
             <<< TextAreaRow(){
                 $0.title = "Message"
                 $0.placeholder = "Enter your message here"
-        }
+                self.message = $0
+            }
+            
+            +++ Section()
+            <<< ButtonRow(){
+                $0.title = "Tap to send contact info"
+                }
+                
+                .onCellSelection({ (cell, row) in
+                   // print("send button selected")
+                    
+                    if let user = self.name?.value, let userEmail = self.email?.value, let userMessage = self.message?.value {
+                         print("name: \(user) \n email: \(userEmail) \n message: \(userMessage)")
+                    } else {
+                        print("form not filled out")
+                    }
+                   
+                })
+    }
+    
+    func sendContactInfo() {
+        
     }
 }
