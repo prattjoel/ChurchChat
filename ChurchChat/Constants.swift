@@ -13,4 +13,7 @@ struct Constants {
     static let messages = "messages"
     static let name = "name"
     static let photoUrl = "photoUrl"
+    static let contactInfo = "contactInformation"
+    static let email = "email"
+    static let contactMessage = "contactMessage"
 }

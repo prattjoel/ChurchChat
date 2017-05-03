@@ -24,7 +24,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - Properties
     
-    let FBClient = FirebaseClient()
+    let FBClient = FirebaseClient.sharedFBClient
     var chatDatasource = ChatTableDataSource()
     var keyboardIsVisible = false
     

@@ -56,6 +56,9 @@ class FirebaseClient {
     
     func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView) {
         dbRef = FIRDatabase.database().reference()
+        dbRef.child(Constants.contactInfo).observe(.childAdded, with: { (snapshot) in
+            print("contact info added to database")
+        })
         dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
             
             chatDataSource.messages.append(snapshot)
@@ -63,7 +66,17 @@ class FirebaseClient {
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable)
         })
         
+    
+        
     }
+    
+//    func databaseConfigForContact() {
+//        dbRef = FIRDatabase.database().reference()
+//        dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
+//
+//        })
+//        
+//    }
     
     func storageConfig() {
         storageRef = FIRStorage.storage().reference()
@@ -77,6 +90,16 @@ class FirebaseClient {
         messageData[Constants.name] = name
         
         dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
+    }
+    
+    func sendUserContact(user: ContactInfo) {
+        let contactData = [
+            Constants.name: user.name,
+            Constants.email: user.email,
+            Constants.contactMessage: user.message
+        ]
+        
+        dbRef.child(Constants.contactInfo).childByAutoId().setValue(contactData)
     }
     
     
@@ -101,4 +124,8 @@ class FirebaseClient {
     }
     
     
+}
+
+extension FirebaseClient {
+    static let sharedFBClient = FirebaseClient()
 }
