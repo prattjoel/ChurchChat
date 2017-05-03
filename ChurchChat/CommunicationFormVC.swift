@@ -11,7 +11,6 @@ import Eureka
 class CommunicationFormVC: FormViewController {
     
     let FBClient = FirebaseClient.sharedFBClient
-    //var chatVC = ChatVC()
     var name: TextRow?
     var email: EmailRow?
     var message: TextAreaRow?
@@ -22,8 +21,6 @@ class CommunicationFormVC: FormViewController {
         navigationItem.rightBarButtonItem?.target = self
         navigationItem.rightBarButtonItem?.action = #selector(sendContactInfo)
         setupForm()
-        //FBClient = chatVC.FBClient
-        //FBClient.databaseConfigForContact()
     }
     
     func setupForm() {
@@ -52,7 +49,6 @@ class CommunicationFormVC: FormViewController {
                 }
                 
                 .onCellSelection({ (cell, row) in
-                   // print("send button selected")
                     
                     if let user = self.name?.value, let userEmail = self.email?.value, let userMessage = self.message?.value {
                         
@@ -60,7 +56,7 @@ class CommunicationFormVC: FormViewController {
                         
                         self.FBClient.sendUserContact(user: contactInfo)
                         
-                         print("name: \(user) \n email: \(userEmail) \n message: \(userMessage)")
+                        // print("name: \(user) \n email: \(userEmail) \n message: \(userMessage)")
                     } else {
                         print("form not filled out")
                     }

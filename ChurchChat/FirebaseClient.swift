@@ -56,9 +56,7 @@ class FirebaseClient {
     
     func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView) {
         dbRef = FIRDatabase.database().reference()
-        dbRef.child(Constants.contactInfo).observe(.childAdded, with: { (snapshot) in
-            print("contact info added to database")
-        })
+
         dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
             
             chatDataSource.messages.append(snapshot)
@@ -70,13 +68,6 @@ class FirebaseClient {
         
     }
     
-//    func databaseConfigForContact() {
-//        dbRef = FIRDatabase.database().reference()
-//        dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
-//
-//        })
-//        
-//    }
     
     func storageConfig() {
         storageRef = FIRStorage.storage().reference()
