@@ -52,6 +52,8 @@ class CommunicationFormVC: FormViewController {
                    // print("send button selected")
                     
                     if let user = self.name?.value, let userEmail = self.email?.value, let userMessage = self.message?.value {
+                        
+                        let contactInfo = ContactInfo(name: user, email: userEmail, message: userMessage)
                          print("name: \(user) \n email: \(userEmail) \n message: \(userMessage)")
                     } else {
                         print("form not filled out")
