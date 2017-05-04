@@ -13,6 +13,7 @@
 		5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */; };
 		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
 		5D5F80211E5CEF0600AE65DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */; };
+		5DA5A7AB1EBB7D7500E1201D /* DonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */; };
 		5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */; };
 		5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A131E57B2C500A00290 /* Main.storyboard */; };
 		5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF82A161E57B2C500A00290 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../iOS-ND/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateVC.swift; sourceTree = "<group>"; };
 		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DF82A141E57B2C500A00290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				5D5057091E58CA44000EF539 /* ChatVC.swift */,
 				5D2CDF8D1EB4E8C600754764 /* CommunicationFormVC.swift */,
+				5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
 				5D2CDF8E1EB4E8C600754764 /* CommunicationFormVC.swift in Sources */,
 				5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */,
+				5DA5A7AB1EBB7D7500E1201D /* DonateVC.swift in Sources */,
 				5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */,
 				5D482C171EBA468000AF2382 /* ContactInfo.swift in Sources */,
 			);

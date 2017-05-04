@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -127,7 +128,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="147.97601199400302"/>
+            <point key="canvasLocation" x="1121" y="-469"/>
         </scene>
         <!--CommunicationForm-->
         <scene sceneID="tqs-pn-bWo">
@@ -146,7 +147,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jt8-mR-KzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="829.83508245877067"/>
+            <point key="canvasLocation" x="1121" y="268"/>
+        </scene>
+        <!--Give-->
+        <scene sceneID="rsh-od-9Sc">
+            <objects>
+                <viewController id="h1g-hw-BrB" customClass="DonateVC" customModule="ChurchChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xBe-Qd-I4c"/>
+                        <viewControllerLayoutGuide type="bottom" id="jXB-Q4-Rxq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fgr-rp-ALo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8u-j0-QX9">
+                                <rect key="frame" x="16" y="318" width="343" height="30"/>
+                                <state key="normal" title="Give">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="donate:" destination="h1g-hw-BrB" eventType="touchUpInside" id="hWE-yT-HyY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R8u-j0-QX9" firstAttribute="leading" secondItem="fgr-rp-ALo" secondAttribute="leadingMargin" id="BXF-YN-bxQ"/>
+                            <constraint firstItem="R8u-j0-QX9" firstAttribute="trailing" secondItem="fgr-rp-ALo" secondAttribute="trailingMargin" id="Uu0-DW-fSx"/>
+                            <constraint firstItem="R8u-j0-QX9" firstAttribute="top" secondItem="xBe-Qd-I4c" secondAttribute="bottom" constant="298" id="aL1-gZ-Fzd"/>
+                            <constraint firstItem="jXB-Q4-Rxq" firstAttribute="top" secondItem="R8u-j0-QX9" secondAttribute="bottom" constant="270" id="ght-Ng-3KI"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Give" id="z0u-Hf-eBB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0v-wr-d0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1120.8" y="965.6671664167917"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zfa-Qq-e8F">
@@ -161,6 +198,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="IKp-Mb-TRl"/>
                         <segue destination="pSw-xK-ulN" kind="relationship" relationship="viewControllers" id="fmg-Eb-xuF"/>
+                        <segue destination="h1g-hw-BrB" kind="relationship" relationship="viewControllers" id="jWC-FI-v3K"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDe-c6-2Et" userLabel="First Responder" sceneMemberID="firstResponder"/>
