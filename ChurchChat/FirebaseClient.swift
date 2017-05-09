@@ -87,7 +87,8 @@ class FirebaseClient {
         let contactData = [
             Constants.name: user.name,
             Constants.email: user.email,
-            Constants.contactMessage: user.message
+            Constants.contactMessage: user.message,
+            Constants.phoneNumber: user.phone
         ]
         
         dbRef.child(Constants.contactInfo).childByAutoId().setValue(contactData)

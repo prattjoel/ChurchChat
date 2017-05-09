@@ -16,4 +16,5 @@ struct Constants {
     static let contactInfo = "contactInformation"
     static let email = "email"
     static let contactMessage = "contactMessage"
+    static let phoneNumber = "phoneNumber"
 }

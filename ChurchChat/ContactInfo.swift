@@ -12,4 +12,5 @@ struct ContactInfo {
     let name: String
     let email: String
     let message: String
+    let phone: String
 }
