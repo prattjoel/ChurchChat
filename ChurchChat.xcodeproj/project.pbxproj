@@ -11,6 +11,7 @@
 		5D482C171EBA468000AF2382 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D482C161EBA468000AF2382 /* ContactInfo.swift */; };
 		5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */; };
 		5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */; };
+		5D4BE1321F354FDA003D121A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BE1311F354FDA003D121A /* GoogleService-Info.plist */; };
 		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
 		5D5F80211E5CEF0600AE65DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */; };
 		5DA5A7AB1EBB7D7500E1201D /* DonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */; };
@@ -47,8 +48,9 @@
 		5D482C161EBA468000AF2382 /* ContactInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableDataSource.swift; sourceTree = "<group>"; };
 		5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		5D4BE1311F354FDA003D121A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../iOS-ND/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateVC.swift; sourceTree = "<group>"; };
 		5DF82A0C1E57B2C500A00290 /* ChurchChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurchChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF82A0F1E57B2C500A00290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		5DF82A031E57B2C500A00290 = {
 			isa = PBXGroup;
 			children = (
+				5D4BE1311F354FDA003D121A /* GoogleService-Info.plist */,
 				5DF82A0E1E57B2C500A00290 /* ChurchChat */,
 				5DF82A231E57B2C500A00290 /* ChurchChatTests */,
 				5DF82A2E1E57B2C500A00290 /* ChurchChatUITests */,
@@ -301,6 +304,7 @@
 			files = (
 				5DF82A1A1E57B2C500A00290 /* LaunchScreen.storyboard in Resources */,
 				5D5F80211E5CEF0600AE65DD /* GoogleService-Info.plist in Resources */,
+				5D4BE1321F354FDA003D121A /* GoogleService-Info.plist in Resources */,
 				5DF82A171E57B2C500A00290 /* Assets.xcassets in Resources */,
 				5DF82A151E57B2C500A00290 /* Main.storyboard in Resources */,
 			);
