@@ -24,6 +24,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         
         let snapshot = messages[indexPath.row]
         let message = snapshot.value as! [String: String]
+        print(message)
         let name = message[Constants.name] ?? "username"
         
         if let photoUrl = message[Constants.photoUrl] {

@@ -78,6 +78,7 @@ class FirebaseClient {
     func sendMessage(data: [String: String]) {
         
         var messageData = data
+        // print(data)
         messageData[Constants.name] = name
         
         dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
