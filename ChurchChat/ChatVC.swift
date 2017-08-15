@@ -36,7 +36,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
         chatTextField.delegate = self
-        
+        //self.navigationController?.navigationBar.barTintColor = UIColor.red
+        //UIApplication.shared.statusBarStyle = status
         
         FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable) { completion in
             if completion {
@@ -124,7 +125,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-                
+        
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let picker = UIImagePickerController()
             picker.delegate = self
@@ -162,7 +163,10 @@ extension ChatVC: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                self.chatTable.frame.origin.y -= keyboardSize.height
+                self.addImage.frame.origin.y -= keyboardSize.height
+                self.messageButton.frame.origin.y -= keyboardSize.height
+                self.chatTextField.frame.origin.y -= keyboardSize.height
             }
             
         }
@@ -173,7 +177,11 @@ extension ChatVC: UITextFieldDelegate {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
+                //self.view.frame.origin.y += keyboardSize.height
+                self.chatTable.frame.origin.y += keyboardSize.height
+                self.addImage.frame.origin.y += keyboardSize.height
+                self.messageButton.frame.origin.y += keyboardSize.height
+                self.chatTextField.frame.origin.y += keyboardSize.height
             }
         }
     }
