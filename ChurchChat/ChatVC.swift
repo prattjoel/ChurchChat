@@ -37,24 +37,11 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         chatTable.dataSource = chatDatasource
         chatTextField.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        //            NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        //            NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        
-        
-        
-        //configAuth()
-        
-        // authUI = FUIAuth.defaultAuthUI()
         
         FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable) { completion in
             if completion {
                 
-                print("\n User signed in successsfully \n")
                 self.isSignedIn(signedIn: true)
-                //self.seeBottomMsg()
-                
             } else {
                 self.presentLogin()
                 self.isSignedIn(signedIn: false)
@@ -67,8 +54,14 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self)
-        //  NotificationCenter.default.removeObserver(self)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
     
@@ -77,7 +70,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     deinit {
         FBClient.dbRef.child(Constants.messages).removeObserver(withHandle: FBClient.dbHandle)
         FIRAuth.auth()?.removeStateDidChangeListener(FBClient.authListener)
-        print("\n listener and observer removed \n")
     }
     
     
@@ -97,7 +89,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         keyboardDismissTapGesture.isEnabled = false
         if signedIn {
             signInButton.isEnabled = false
-
+            
         } else {
             signInButton.isEnabled = true
         }
@@ -132,7 +124,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-        
+                
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let picker = UIImagePickerController()
             picker.delegate = self
@@ -164,77 +156,27 @@ extension ChatVC: UITextFieldDelegate {
     
     func keyboardWillShow(_ notification: Notification) {
         
-       print("keyboard shown")
         
         keyboardDismissTapGesture.isEnabled = true
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                
-                if self.view.frame.origin.y == 0 {
+            if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
-                
-              //  keyboardIsVisible = true
-                }
-                
             }
+            
+        }
     }
     
     func keyboardWillHide(_ notification: Notification) {
         keyboardDismissTapGesture.isEnabled = false
         
-   
-            
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                if self.view.frame.origin.y != 0 {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
-                
-               // keyboardIsVisible = false
-                }
-                //chatTextField.resignFirstResponder()
-                
+            }
         }
-        
-//        if keyboardIsVisible {
-//            
-//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//                
-//                self.view.frame.origin.y += keyboardSize.height
-//                
-//                keyboardIsVisible = false
-//                //chatTextField.resignFirstResponder()
-//                
-//            } else {
-//                print("no keyboard")
-//            }
-//        }
     }
-    
-    
-    //
-    //    func keyboardWillShow(_ notification: Notification) {
-    //        if !keyboardIsVisible {
-    //            view.frame.origin.y -= keyboardHeight(notification)
-    //        }
-    //    }
-    //
-    //    func keyboardWillHide(_ notification: Notification) {
-    //        if keyboardIsVisible {
-    //            view.frame.origin.y += keyboardHeight(notification)
-    //        }
-    //    }
-    
-//    func keyboardDidShow(_ notification: Notification) {
-//        keyboardIsVisible = true
-//    }
-//    
-//    func keyboardDidHide(_ notification: Notification) {
-//        keyboardIsVisible = false
-//    }
-    //
-    //    func keyboardHeight(_ notification: Notification) -> CGFloat {
-    //        return((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.height
-    //    }
-    
 }
 
 // MARK: - ChatVC: UIImagePickerControllerDelegate
@@ -243,6 +185,7 @@ extension ChatVC: UIImagePickerControllerDelegate {
     // MARK: - Image Piicker Functions
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         if let photo = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(photo, 0.8) {
             FBClient.sendPhoto(data: photoData)
         }
@@ -253,6 +196,5 @@ extension ChatVC: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
 }
 

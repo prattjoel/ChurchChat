@@ -24,14 +24,14 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         
         let snapshot = messages[indexPath.row]
         let message = snapshot.value as! [String: String]
-        print(message)
+        // print(message)
         let name = message[Constants.name] ?? "username"
         
         if let photoUrl = message[Constants.photoUrl] {
             cell.textLabel?.text = "From: \(name)"
             FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
                 guard error == nil else {
-                    print("erro downloading image from photUrl: \(String(describing: error))")
+               //     print("erro downloading image from photUrl: \(String(describing: error))")
                     return
                 }
                 
