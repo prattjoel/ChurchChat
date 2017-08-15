@@ -14,7 +14,6 @@ class CommunicationFormVC: FormViewController {
     var name: TextRow?
     var email: EmailRow?
     var message: TextAreaRow?
-    var phone: PhoneRow?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +36,6 @@ class CommunicationFormVC: FormViewController {
                 self.email = $0
             }
             
-            <<< PhoneRow() {
-                $0.title = "Phone Number"
-                $0.placeholder = "Enter phone number here"
-                self.phone = $0
-            }
-            
             +++ Section("Communication")
             <<< TextAreaRow(){
                 $0.title = "Message"
@@ -57,9 +50,9 @@ class CommunicationFormVC: FormViewController {
                 
                 .onCellSelection({ (cell, row) in
                     
-                    if let user = self.name?.value, let userEmail = self.email?.value, let userMessage = self.message?.value, let userPhone = self.phone?.value {
+                    if let user = self.name?.value, let userEmail = self.email?.value, let userMessage = self.message?.value {
                         
-                        let contactInfo = ContactInfo(name: user, email: userEmail, message: userMessage, phone: userPhone)
+                        let contactInfo = ContactInfo(name: user, email: userEmail, message: userMessage)
                         
                         self.FBClient.sendUserContact(user: contactInfo)
                         
