@@ -59,7 +59,9 @@ class FirebaseClient {
 
         dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
             
-            chatDataSource.messages.append(snapshot)
+            
+            let chatMessage = ChatMessage.init(snapShot: snapshot)
+            chatDataSource.messages.append(chatMessage)
             chatTable.insertRows(at: [IndexPath(row: chatDataSource.messages.count - 1, section: 0)], with: .automatic)
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable)
         })

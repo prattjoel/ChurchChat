@@ -10,9 +10,24 @@ import Foundation
 import Firebase
 
 struct ChatMessage {
-    let snapShot: FIRDataSnapshot
-    let image: UIImage
-    let text: String
-    let name: String
-    let url: String
+    var image: UIImage?
+    var text: String?
+    var name: String?
+    var url: String?
+    
+    init(snapShot: FIRDataSnapshot) {
+        
+        let shotData = snapShot.value as! [String: String]
+        
+        if let snapShotText = shotData[Constants.text] {
+            text = snapShotText
+        }
+        
+        if let snapShotName = shotData[Constants.name] {
+            name = snapShotName
+        }
+        if let snapUrl = shotData[Constants.photoUrl] {
+            url = snapUrl
+        }
+    }
 }
