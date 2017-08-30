@@ -37,8 +37,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
         chatTextField.delegate = self
-        //self.navigationController?.navigationBar.barTintColor = UIColor.red
-        //UIApplication.shared.statusBarStyle = status
         
         FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable) { completion in
             if completion {
