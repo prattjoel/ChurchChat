@@ -195,7 +195,7 @@
                 <navigationController navigationBarHidden="YES" id="5MP-Xx-Ngl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" id="ffn-0i-vj8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iOe-lh-yAD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iOe-lh-yAD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
