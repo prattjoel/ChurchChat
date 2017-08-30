@@ -164,11 +164,10 @@ extension ChatVC: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
             if self.view.frame.origin.y == 0 {
-                self.chatTable.frame.origin.y -= keyboardSize.height
-                self.messageTextStack.frame.origin.y -= keyboardSize.height
-//                self.addImage.frame.origin.y -= keyboardSize.height
-//                self.messageButton.frame.origin.y -= keyboardSize.height
-//                self.chatTextField.frame.origin.y -= keyboardSize.height
+                let tabBarHeight = self.tabBarController?.tabBar.frame.height
+                let totalSize = keyboardSize.height - tabBarHeight!
+                self.chatTable.frame.origin.y -= totalSize
+                self.messageTextStack.frame.origin.y -= totalSize
             }
             
         }
@@ -179,12 +178,8 @@ extension ChatVC: UITextFieldDelegate {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
-                //self.view.frame.origin.y += keyboardSize.height
                 self.chatTable.frame.origin.y += keyboardSize.height
                 self.messageTextStack.frame.origin.y -= keyboardSize.height
-//                self.addImage.frame.origin.y += keyboardSize.height
-//                self.messageButton.frame.origin.y += keyboardSize.height
-//                self.chatTextField.frame.origin.y += keyboardSize.height
             }
         }
     }
