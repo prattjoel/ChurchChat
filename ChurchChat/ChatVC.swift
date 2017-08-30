@@ -21,6 +21,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var signInButton: UIBarButtonItem!
     @IBOutlet weak var signOutButton: UIBarButtonItem!
     @IBOutlet var keyboardDismissTapGesture: UITapGestureRecognizer!
+    @IBOutlet weak var messageTextStack: UIStackView!
     
     // MARK: - Properties
     
@@ -164,9 +165,10 @@ extension ChatVC: UITextFieldDelegate {
             
             if self.view.frame.origin.y == 0 {
                 self.chatTable.frame.origin.y -= keyboardSize.height
-                self.addImage.frame.origin.y -= keyboardSize.height
-                self.messageButton.frame.origin.y -= keyboardSize.height
-                self.chatTextField.frame.origin.y -= keyboardSize.height
+                self.messageTextStack.frame.origin.y -= keyboardSize.height
+//                self.addImage.frame.origin.y -= keyboardSize.height
+//                self.messageButton.frame.origin.y -= keyboardSize.height
+//                self.chatTextField.frame.origin.y -= keyboardSize.height
             }
             
         }
@@ -179,9 +181,10 @@ extension ChatVC: UITextFieldDelegate {
             if self.view.frame.origin.y != 0 {
                 //self.view.frame.origin.y += keyboardSize.height
                 self.chatTable.frame.origin.y += keyboardSize.height
-                self.addImage.frame.origin.y += keyboardSize.height
-                self.messageButton.frame.origin.y += keyboardSize.height
-                self.chatTextField.frame.origin.y += keyboardSize.height
+                self.messageTextStack.frame.origin.y -= keyboardSize.height
+//                self.addImage.frame.origin.y += keyboardSize.height
+//                self.messageButton.frame.origin.y += keyboardSize.height
+//                self.chatTextField.frame.origin.y += keyboardSize.height
             }
         }
     }

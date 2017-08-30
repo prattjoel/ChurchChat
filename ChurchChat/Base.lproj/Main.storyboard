@@ -101,6 +101,7 @@
                         <outlet property="chatTextField" destination="Qng-sb-z13" id="s4C-U6-faQ"/>
                         <outlet property="keyboardDismissTapGesture" destination="Kpf-Nw-CdG" id="7kf-vL-0v9"/>
                         <outlet property="messageButton" destination="Tz3-FN-Zwq" id="va6-m4-9HW"/>
+                        <outlet property="messageTextStack" destination="3Y5-DY-RUc" id="uj7-Mj-xUn"/>
                         <outlet property="signInButton" destination="hXe-yr-6Zy" id="oam-zV-w7l"/>
                         <outlet property="signOutButton" destination="idn-8U-dcH" id="iNR-9B-r4O"/>
                     </connections>
