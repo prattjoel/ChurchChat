@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class ChatCell: UITableViewCell {
+    @IBOutlet weak var chatTitle: UILabel!
+    @IBOutlet weak var chatImage: UIImageView!
+    @IBOutlet weak var chatMessage: UILabel!
     
     override func prepareForReuse() {
         super.prepareForReuse()

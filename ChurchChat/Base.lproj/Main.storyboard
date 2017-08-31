@@ -26,27 +26,49 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" id="a6I-XY-G0G" customClass="ChatCell" customModule="ChurchChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="140" id="a6I-XY-G0G" customClass="ChatCell" customModule="ChurchChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6I-XY-G0G" id="ld6-88-25p">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fci-cL-ECL">
-                                                    <rect key="frame" x="8" y="0.0" width="304" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fci-cL-ECL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="406" height="19"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9yL-nE-coF">
+                                                    <rect key="frame" x="0.0" y="26" width="414" height="113"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-ss-yR7">
+                                                    <rect key="frame" x="8" y="26" width="398" height="106"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Fci-cL-ECL" secondAttribute="bottom" constant="0.5" id="2yP-gZ-qrQ"/>
-                                                <constraint firstItem="Fci-cL-ECL" firstAttribute="trailing" secondItem="ld6-88-25p" secondAttribute="trailingMargin" id="8V1-bw-mo7"/>
-                                                <constraint firstItem="Fci-cL-ECL" firstAttribute="leading" secondItem="ld6-88-25p" secondAttribute="leadingMargin" id="p0g-wc-bjC"/>
-                                                <constraint firstItem="Fci-cL-ECL" firstAttribute="top" secondItem="ld6-88-25p" secondAttribute="top" id="yeB-np-drz"/>
+                                                <constraint firstAttribute="bottom" secondItem="9yL-nE-coF" secondAttribute="bottom" id="5fX-wJ-Tv1"/>
+                                                <constraint firstItem="Fci-cL-ECL" firstAttribute="leading" secondItem="ld6-88-25p" secondAttribute="leading" id="6bh-dL-r98"/>
+                                                <constraint firstAttribute="bottom" secondItem="qe3-ss-yR7" secondAttribute="bottom" constant="7.5" id="IBE-OC-fOb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fci-cL-ECL" secondAttribute="trailing" constant="8" id="OcJ-Rn-odI"/>
+                                                <constraint firstItem="qe3-ss-yR7" firstAttribute="top" secondItem="Fci-cL-ECL" secondAttribute="bottom" constant="7.3333333333333321" id="Qsr-Bo-QAr"/>
+                                                <constraint firstItem="qe3-ss-yR7" firstAttribute="top" secondItem="9yL-nE-coF" secondAttribute="top" id="R7n-yi-3pI"/>
+                                                <constraint firstAttribute="trailing" secondItem="9yL-nE-coF" secondAttribute="trailing" id="gGL-dn-T1a"/>
+                                                <constraint firstItem="9yL-nE-coF" firstAttribute="leading" secondItem="ld6-88-25p" secondAttribute="leading" id="ifV-zH-3dH"/>
+                                                <constraint firstItem="Fci-cL-ECL" firstAttribute="top" secondItem="ld6-88-25p" secondAttribute="top" id="is2-yl-R0W"/>
+                                                <constraint firstItem="9yL-nE-coF" firstAttribute="top" secondItem="ld6-88-25p" secondAttribute="top" constant="26" id="ooh-ZR-sb5"/>
+                                                <constraint firstAttribute="trailing" secondItem="qe3-ss-yR7" secondAttribute="trailing" constant="8" id="vIf-C9-xVO"/>
+                                                <constraint firstItem="qe3-ss-yR7" firstAttribute="leading" secondItem="ld6-88-25p" secondAttribute="leading" constant="8" id="zTg-pw-6do"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatImage" destination="9yL-nE-coF" id="0W1-ik-UOM"/>
+                                            <outlet property="chatMessage" destination="qe3-ss-yR7" id="cjQ-8P-5bj"/>
+                                            <outlet property="chatTitle" destination="Fci-cL-ECL" id="3rw-uB-HKb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -113,7 +135,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2997.5999999999999" y="-470.01499250374815"/>
+            <point key="canvasLocation" x="2997.1014492753625" y="-470.38043478260875"/>
         </scene>
         <!--CommunicationForm-->
         <scene sceneID="tqs-pn-bWo">
@@ -196,7 +218,7 @@
                 <navigationController storyboardIdentifier="Chat" title="Chat" automaticallyAdjustsScrollViewInsets="NO" id="bjl-YL-RHY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" id="RRU-Ly-1b2" userLabel="Chat"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P9V-Iy-ZAq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P9V-Iy-ZAq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

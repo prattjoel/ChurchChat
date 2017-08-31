@@ -36,6 +36,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
+        chatTable.rowHeight = UITableViewAutomaticDimension
+         chatTable.estimatedRowHeight = 140
+        
         chatTextField.delegate = self
         
         FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable) { completion in

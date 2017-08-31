@@ -25,11 +25,11 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         let message = messages[indexPath.row]
         let name = message.name ?? "username"
         if let image = message.image {
-            cell.imageView?.image = image
+            cell.chatImage.image = image
         } else {
             
             if let photoUrl = message.url {
-                cell.textLabel?.text = "From: \(name)"
+                cell.chatTitle.text = "From: \(name)"
                 FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
                     guard error == nil else {
                         print("erro downloading image from photUrl: \(String(describing: error))")
@@ -39,7 +39,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                     let messagePhoto = UIImage.init(data: data!, scale: 50)
                     if cell == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
-                            cell.imageView?.image = messagePhoto
+                            cell.chatImage.image = messagePhoto
                             self.messages[indexPath.row].image = messagePhoto
                             cell.setNeedsLayout()
                         }
@@ -47,7 +47,9 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                 })
             } else {
                 let text = message.text ?? "[message]"
-                cell.textLabel?.text = name + ": " + text
+                cell.chatTitle.text = name + ": "
+                cell.chatMessage.text = text
+               // cell.textLabel?.text = name + ": " + text
             }
         }
 
