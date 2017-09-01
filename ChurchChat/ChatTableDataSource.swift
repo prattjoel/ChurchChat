@@ -26,6 +26,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         let name = message.name ?? "username"
         if let image = message.image {
             cell.chatImage.image = image
+            cell.chatTitle.text = "From: \(name)"
+
         } else {
             
             if let photoUrl = message.url {

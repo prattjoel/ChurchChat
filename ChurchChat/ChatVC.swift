@@ -37,7 +37,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         chatTable.dataSource = chatDatasource
         chatTable.rowHeight = UITableViewAutomaticDimension
-         chatTable.estimatedRowHeight = 140
+         chatTable.estimatedRowHeight = 100
+    
+        chatTable.reloadData()
         
         chatTextField.delegate = self
         

@@ -16,6 +16,8 @@ class ChatCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.imageView?.image = nil
+        self.chatImage.image = nil
+        self.chatMessage.text = nil
+        self.chatTitle.text = nil
     }
 }
