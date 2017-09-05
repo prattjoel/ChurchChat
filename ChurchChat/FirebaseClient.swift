@@ -26,7 +26,7 @@ class FirebaseClient {
     
     // MARK: - Firebase Config Methods
     
-    func configAuth(chatDataSource: ChatTableDataSource, chatTable: UITableView, completion: @escaping (Bool)->Void) {
+    func configAuth(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String, completion: @escaping (Bool)->Void) {
         
         authUI = FUIAuth.defaultAuthUI()
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
@@ -41,7 +41,7 @@ class FirebaseClient {
                 if self.user != currentUser {
                     self.user = currentUser
                     self.name = user!.email!.components(separatedBy: "@")[0]
-                    self.databaseConfig(chatDataSource: chatDataSource, chatTable: chatTable)
+                    self.databaseConfig(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
                     
                     self.storageConfig()
                     completion(true)
@@ -54,11 +54,12 @@ class FirebaseClient {
         
     }
     
-    func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView) {
+    func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
         dbRef = FIRDatabase.database().reference()
 
-        dbHandle = dbRef.child(Constants.messages).observe(.childAdded, with: { (snapshot) in
+        dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
+          //  chatDataSource.messages.removeAll()
             
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             chatDataSource.messages.append(chatMessage)
@@ -78,13 +79,13 @@ class FirebaseClient {
     
     // MARK: - Firebase Data sending methods
     
-    func sendMessage(data: [String: String]) {
+    func sendMessage(data: [String: String], chatRoom: String) {
         
         var messageData = data
         // print(data)
         messageData[Constants.name] = name
         
-        dbRef.child(Constants.messages).childByAutoId().setValue(messageData)
+        dbRef.child(chatRoom).childByAutoId().setValue(messageData)
     }
     
     func sendUserContact(user: ContactInfo) {
@@ -98,7 +99,7 @@ class FirebaseClient {
     }
     
     
-    func sendPhoto(data: Data) {
+    func sendPhoto(data: Data, chatRoom: String) {
         let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jeg"
@@ -109,7 +110,7 @@ class FirebaseClient {
                 return
             }
             
-            self.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description])
+            self.sendMessage(data: [Constants.photoUrl: self.storageRef.child((metadata?.path)!).description], chatRoom: chatRoom)
         }
     }
     

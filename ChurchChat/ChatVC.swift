@@ -28,6 +28,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     let FBClient = FirebaseClient.sharedFBClient
     var chatDatasource = ChatTableDataSource()
     var keyboardIsVisible = false
+    var chatRoom: String?
     
     
     
@@ -35,15 +36,16 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatRoom = Constants.messages
         chatTable.dataSource = chatDatasource
         chatTable.rowHeight = UITableViewAutomaticDimension
-         chatTable.estimatedRowHeight = 100
+         chatTable.estimatedRowHeight = 120
     
         chatTable.reloadData()
         
         chatTextField.delegate = self
         
-        FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable) { completion in
+        FBClient.configAuth(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!) { completion in
             if completion {
                 
                 self.isSignedIn(signedIn: true)
@@ -142,6 +144,18 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    @IBAction func chooseRoom(_ sender: UIBarButtonItem) {
+        if chatRoom == Constants.messages {
+            chatRoom = Constants.prayerMessages
+        } else {
+            chatRoom = Constants.messages
+        }
+        
+        chatDatasource.messages.removeAll()
+        
+        FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
+        chatTable.reloadData()
+    }
 }
 
 // MARK: - ChatVC: UITextFieldDelegate
@@ -152,7 +166,7 @@ extension ChatVC: UITextFieldDelegate {
         
         if !textField.text!.isEmpty {
             let data = [Constants.text: textField.text! as String]
-            FBClient.sendMessage(data: data)
+            FBClient.sendMessage(data: data, chatRoom: chatRoom!)
             textField.resignFirstResponder()
             chatTextField.text = ""
         }
@@ -196,7 +210,7 @@ extension ChatVC: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let photo = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(photo, 0.8) {
-            FBClient.sendPhoto(data: photoData)
+            FBClient.sendPhoto(data: photoData, chatRoom: chatRoom!)
         }
         
         picker.dismiss(animated: true, completion: nil)

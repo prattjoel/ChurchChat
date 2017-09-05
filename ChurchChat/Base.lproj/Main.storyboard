@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,13 +41,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-ss-yR7">
-                                                    <rect key="frame" x="95" y="0.0" width="319" height="149.66666666666666"/>
+                                                    <rect key="frame" x="95" y="50.000000000000007" width="319" height="49.666666666666679"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="9yL-nE-coF">
-                                                    <rect key="frame" x="157" y="25" width="100" height="100"/>
+                                                    <rect key="frame" x="157" y="24.666666666666664" width="100" height="100.33333333333334"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="NtV-6H-Dm6"/>
                                                         <constraint firstAttribute="height" constant="100" id="hJJ-9y-VTc"/>
@@ -59,11 +60,11 @@
                                                 <constraint firstItem="9yL-nE-coF" firstAttribute="leading" secondItem="Fci-cL-ECL" secondAttribute="trailing" constant="32" id="GcG-gP-mNL"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Fci-cL-ECL" secondAttribute="bottom" constant="94.670000000000002" id="ICM-Y7-GCi"/>
                                                 <constraint firstItem="9yL-nE-coF" firstAttribute="centerY" secondItem="ld6-88-25p" secondAttribute="centerY" id="Jgv-9t-rWo"/>
-                                                <constraint firstAttribute="bottom" secondItem="qe3-ss-yR7" secondAttribute="bottom" id="Jyy-Hn-JOJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="qe3-ss-yR7" secondAttribute="bottom" constant="50" id="Jyy-Hn-JOJ"/>
                                                 <constraint firstItem="Fci-cL-ECL" firstAttribute="top" secondItem="ld6-88-25p" secondAttribute="topMargin" id="LRD-tK-YuI"/>
                                                 <constraint firstItem="Fci-cL-ECL" firstAttribute="leading" secondItem="ld6-88-25p" secondAttribute="leadingMargin" id="Lbj-DJ-IMz"/>
                                                 <constraint firstAttribute="trailing" secondItem="qe3-ss-yR7" secondAttribute="trailing" id="bpF-aN-2Zi"/>
-                                                <constraint firstItem="qe3-ss-yR7" firstAttribute="top" secondItem="ld6-88-25p" secondAttribute="top" id="kwB-E8-6Cp"/>
+                                                <constraint firstItem="qe3-ss-yR7" firstAttribute="top" secondItem="ld6-88-25p" secondAttribute="top" constant="50" id="kwB-E8-6Cp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -117,7 +118,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Connect" id="44B-rr-1Gs">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="idn-8U-dcH"/>
-                        <barButtonItem key="rightBarButtonItem" title="Sign In" id="hXe-yr-6Zy"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Chat Room" id="lyS-yy-y2E">
+                                <connections>
+                                    <action selector="chooseRoom:" destination="BYZ-38-t0r" id="TtR-LP-kEZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Sign In" id="hXe-yr-6Zy"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addImage" destination="ndG-f0-zhr" id="3jy-Kq-O9k"/>
@@ -220,7 +228,7 @@
                 <navigationController storyboardIdentifier="Chat" title="Chat" automaticallyAdjustsScrollViewInsets="NO" id="bjl-YL-RHY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" id="RRU-Ly-1b2" userLabel="Chat"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P9V-Iy-ZAq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P9V-Iy-ZAq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
