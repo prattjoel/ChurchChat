@@ -151,7 +151,11 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             chatRoom = Constants.messages
         }
         
-        chatDatasource.messages.removeAll()
+        var messageSource = chatDatasource.getDataSource(chatRoom: chatRoom!)
+        
+        messageSource?.removeAll()
+        
+        //chatDatasource.messages.removeAll()
         
         FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
         chatTable.reloadData()

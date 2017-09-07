@@ -34,7 +34,9 @@ class FirebaseClient {
         
         authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
             
-            chatDataSource.messages.removeAll(keepingCapacity: false)
+           var messageSource = chatDataSource.getDataSource(chatRoom: chatRoom)
+            messageSource!.removeAll(keepingCapacity: false)
+            //chatDataSource.messages.removeAll(keepingCapacity: false)
             chatTable.reloadData()
             
             if let currentUser = user {
@@ -62,10 +64,12 @@ class FirebaseClient {
           //  chatDataSource.messages.removeAll()
             
             let chatMessage = ChatMessage.init(snapShot: snapshot)
-            chatDataSource.messages.append(chatMessage)
+            var messageSource = chatDataSource.getDataSource(chatRoom: chatRoom)
+            messageSource?.append(chatMessage)
+            //chatDataSource.messages.append(chatMessage)
         
-            chatTable.insertRows(at: [IndexPath(row: chatDataSource.messages.count - 1, section: 0)], with: .automatic)
-            self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable)
+            chatTable.insertRows(at: [IndexPath(row: (messageSource!.count) - 1, section: 0)], with: .automatic)
+            self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
         })
         
     
@@ -114,8 +118,11 @@ class FirebaseClient {
         }
     }
     
-    func seeBottomMsg(chatDataSource: ChatTableDataSource, chatTable: UITableView) {
-        let bottomIndex = IndexPath(row: (chatDataSource.messages.count-1), section: 0)
+    func seeBottomMsg(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
+        
+        let messageSource = chatDataSource.getDataSource(chatRoom: chatRoom)
+        
+        let bottomIndex = IndexPath(row: ((messageSource?.count)!-1), section: 0)
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
     }
     
