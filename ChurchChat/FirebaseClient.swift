@@ -61,12 +61,8 @@ class FirebaseClient {
 
         dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
-          //  chatDataSource.messages.removeAll()
-            
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             chatDataSource.updateDataSource(chatRoom: chatRoom, message: chatMessage)
-           // messageSource?.append(chatMessage)
-            //chatDataSource.messages.append(chatMessage)
         
             chatTable.insertRows(at: [IndexPath(row: (chatDataSource.currentMessages.count) - 1, section: 0)], with: .automatic)
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
@@ -86,7 +82,6 @@ class FirebaseClient {
     func sendMessage(data: [String: String], chatRoom: String) {
         
         var messageData = data
-        // print(data)
         messageData[Constants.name] = name
         
         dbRef.child(chatRoom).childByAutoId().setValue(messageData)

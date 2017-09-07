@@ -153,12 +153,12 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         
         chatDatasource.setCurrentMessages(chatRoom: chatRoom!)
         
-        chatDatasource.currentMessages.removeAll()
+        if chatDatasource.currentMessages.count < 1 {
+            FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
+        }
         
-        //chatDatasource.messages.removeAll()
-        
-        FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
         chatTable.reloadData()
+        
     }
 }
 

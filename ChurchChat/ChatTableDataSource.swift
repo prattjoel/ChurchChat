@@ -31,12 +31,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch messages {
-        case .chat:
-            return chatMessages.count
-        case .prayer:
-            return prayerMessages.count
-        }
+        return currentMessages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,42 +46,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
            return checkForImage(messages: prayerMessages, indexPath: indexPath, cell: cell, tableView: tableView)
             
         }
-        
-//        let message = messages[indexPath.row]
-//        let name = message.name ?? "username"
-//        if let image = message.image {
-//            cell.chatImage.image = image
-//            cell.chatTitle.text = "From: \(name)"
-//
-//        } else {
-//            
-//            if let photoUrl = message.url {
-//                cell.chatTitle.text = "From: \(name)"
-//                FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
-//                    guard error == nil else {
-//                        print("erro downloading image from photUrl: \(String(describing: error))")
-//                        return
-//                    }
-//                    
-//                    let messagePhoto = UIImage.init(data: data!, scale: 50)
-//                    if cell == tableView.cellForRow(at: indexPath) {
-//                        DispatchQueue.main.async {
-//                            cell.chatImage.image = messagePhoto
-//                            self.messages[indexPath.row].image = messagePhoto
-//                            cell.setNeedsLayout()
-//                        }
-//                    }
-//                })
-//            } else {
-//                let text = message.text ?? "[message]"
-//                cell.chatTitle.text = name + ": "
-//                cell.chatMessage.text = text
-//               // cell.textLabel?.text = name + ": " + text
-//            }
-//        }
 
-        
-        //return cell
     }
     
     
@@ -122,7 +82,6 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                 let text = message.text ?? "[message]"
                 cell.chatTitle.text = name + ": "
                 cell.chatMessage.text = text
-                // cell.textLabel?.text = name + ": " + text
             }
         }
         
