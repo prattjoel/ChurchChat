@@ -22,6 +22,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     
     var prayerMessages = [ChatMessage]()
     
+    var currentMessages = [ChatMessage]()
+    
     
     
     
@@ -127,17 +129,32 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
-    
-    func getDataSource(chatRoom: String) -> [ChatMessage]? {
+    func setCurrentMessages(chatRoom: String) {
         switch chatRoom {
         case Constants.messages:
             messages = Messages.chat
-            return chatMessages
+            currentMessages = chatMessages
         case Constants.prayerMessages:
             messages = Messages.prayer
-            return prayerMessages
+            currentMessages = prayerMessages
         default:
-            return nil
+            print("no messages could be set")
+        }
+    }
+    
+    
+    func updateDataSource(chatRoom: String, message: ChatMessage) {
+        switch chatRoom {
+        case Constants.messages:
+            messages = Messages.chat
+            chatMessages.append(message)
+            currentMessages = chatMessages
+        case Constants.prayerMessages:
+            messages = Messages.prayer
+            prayerMessages.append(message)
+            currentMessages = prayerMessages
+        default:
+            print("no message found")
         }
     }
     

@@ -151,9 +151,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             chatRoom = Constants.messages
         }
         
-        var messageSource = chatDatasource.getDataSource(chatRoom: chatRoom!)
+        chatDatasource.setCurrentMessages(chatRoom: chatRoom!)
         
-        messageSource?.removeAll()
+        chatDatasource.currentMessages.removeAll()
         
         //chatDatasource.messages.removeAll()
         
