@@ -2,4 +2,101 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChurchChat/ChatTableDataSource.swift"
+            timestampString = "526582759.131094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "ChatTableDataSource"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChurchChat.ChatTableDataSource.checkForImage (messages : Swift.Array&lt;ChurchChat.ChatMessage&gt;, indexPath : Foundation.IndexPath, cell : ChurchChat.ChatCell, tableView : __ObjC.UITableView) -&gt; ChurchChat.ChatCell"
+                  moduleName = "ChurchChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joel/Developer/ChurchChat/ChurchChat/ChatTableDataSource.swift"
+                  timestampString = "526520449.144226"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChurchChat.ChatTableDataSource.(checkForImage (messages : Swift.Array&lt;ChurchChat.ChatMessage&gt;, indexPath : Foundation.IndexPath, cell : ChurchChat.ChatCell, tableView : __ObjC.UITableView) -&gt; ChurchChat.ChatCell).(closure #1)"
+                  moduleName = "ChurchChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joel/Developer/ChurchChat/ChurchChat/ChatTableDataSource.swift"
+                  timestampString = "526520449.15215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChurchChat.ChatTableDataSource.(checkForImage (messages : Swift.Array&lt;ChurchChat.ChatMessage&gt;, indexPath : Foundation.IndexPath, cell : ChurchChat.ChatCell, tableView : __ObjC.UITableView) -&gt; ChurchChat.ChatCell).(closure #1).(closure #1)"
+                  moduleName = "ChurchChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joel/Developer/ChurchChat/ChurchChat/ChatTableDataSource.swift"
+                  timestampString = "526520449.1558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChurchChat/ChatVC.swift"
+            timestampString = "526583369.442898"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "chooseRoom(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChurchChat/ChatVC.swift"
+            timestampString = "526585525.793358"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "chooseRoom(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

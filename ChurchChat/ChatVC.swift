@@ -153,7 +153,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         
         chatDatasource.setCurrentMessages(chatRoom: chatRoom!)
         
-        if chatDatasource.currentMessages.count < 1 {
+        if chatDatasource.messageLists[chatRoom!] == nil {
+            chatDatasource.currentMessages.removeAll()
+            //chatTable.numberOfRows(inSection: 0)
             FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
         }
         
