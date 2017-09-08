@@ -26,6 +26,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     
     var messageLists = [String: [ChatMessage]]()
     
+    var chatRoom: String?
+    
     
     
 //    
@@ -78,6 +80,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                         DispatchQueue.main.async {
                             cell.chatImage.image = messagePhoto
                             self.currentMessages[indexPath.row].image = messagePhoto
+                            self.messageLists[self.chatRoom!]?[indexPath.row].image = messagePhoto
 //                            let currentMessageList = self.getCurrentMessages()
 //                            self.messageLists[currentMessageList]?[indexPath.row].image = messagePhoto
                             cell.setNeedsLayout()
@@ -95,6 +98,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     }
     
     func setCurrentMessages(chatRoom: String) {
+        
+        self.chatRoom = chatRoom
         
         if let messages = messageLists[chatRoom] {
             currentMessages = messages
