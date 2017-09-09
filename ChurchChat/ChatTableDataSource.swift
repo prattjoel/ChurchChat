@@ -9,18 +9,8 @@
 import UIKit
 import Firebase
 
-//enum Messages {
-//    case prayer
-//    
-//    case chat
-//}
-
 
 class ChatTableDataSource: NSObject, UITableViewDataSource {
-//    
-//    var chatMessages = [ChatMessage]()
-//    
-//    var prayerMessages = [ChatMessage]()
     
     var currentMessages = [ChatMessage]()
     
@@ -28,10 +18,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     
     var chatRoom: String?
     
-    
-    
-//    
-//    var messages = Messages.chat
+    // MARK: - TableView DataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -43,20 +30,13 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! ChatCell
         
-//        switch messages {
-//        case .chat:
-//           return checkForImage(messagesForCell: chatMessages, indexPath: indexPath, cell: cell, tableView: tableView)
-//        case .prayer:
-//           return checkForImage(messagesForCell: prayerMessages, indexPath: indexPath, cell: cell, tableView: tableView)
-//            
-//        }
-        
         return checkForImage(indexPath: indexPath, cell: cell, tableView: tableView)
 
     }
     
+    // MARK: - TableView Helper Methods
     
-    
+    // Populate cell with image and/or text
     func checkForImage(indexPath: IndexPath, cell: ChatCell, tableView: UITableView) -> ChatCell {
         
         let message = currentMessages[indexPath.row]
@@ -78,12 +58,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                     let messagePhoto = UIImage.init(data: data!, scale: 50)
                     if cell == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
-                            cell.chatImage.image = messagePhoto
-                            self.currentMessages[indexPath.row].image = messagePhoto
-                            self.messageLists[self.chatRoom!]?[indexPath.row].image = messagePhoto
-//                            let currentMessageList = self.getCurrentMessages()
-//                            self.messageLists[currentMessageList]?[indexPath.row].image = messagePhoto
-                            cell.setNeedsLayout()
+                            self.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
                         }
                     }
                 })
@@ -93,31 +68,20 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                 cell.chatMessage.text = text
             }
         }
-        
         return cell
     }
     
+    // Set the current array of messages to be displayed
     func setCurrentMessages(chatRoom: String) {
         
         self.chatRoom = chatRoom
         
         if let messages = messageLists[chatRoom] {
             currentMessages = messages
-        } 
-        
-//        switch chatRoom {
-//        case Constants.messages:
-//            messages = Messages.chat
-//            currentMessages = chatMessages
-//        case Constants.prayerMessages:
-//            messages = Messages.prayer
-//            currentMessages = prayerMessages
-//        default:
-//            print("no messages could be set")
-//        }
+        }
     }
     
-    
+    // Add messages to appropriate array of messages
     func updateDataSource(chatRoom: String, message: ChatMessage) {
         
         if (messageLists[chatRoom] != nil) {
@@ -127,34 +91,13 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
             messageLists[chatRoom] = [message]
             currentMessages = messageLists[chatRoom]!
         }
-        
-//        if chatMessages.count == 0, prayerMessages.count == 0 {
-//            messageLists[Constants.messages] = chatMessages
-//            messageLists[Constants.prayerMessages] = prayerMessages
-//        }
-//        switch chatRoom {
-//        case Constants.messages:
-//            messages = Messages.chat
-//            chatMessages.append(message)
-//            currentMessages = chatMessages
-//        case Constants.prayerMessages:
-//            messages = Messages.prayer
-//            prayerMessages.append(message)
-//            currentMessages = prayerMessages
-//        default:
-//            print("no message found")
-//        }
     }
     
-//    func getCurrentMessages() -> String {
-//        
-//        switch messages {
-//        case .chat:
-//            return Constants.messages
-//        case .prayer:
-//            return Constants.prayerMessages
-//            
-//        }
-//    }
-    
+    // Add UIImage to cell in the appropriate message array
+    func addImageToMessage(image: UIImage, cell: ChatCell, indexPath: IndexPath) {
+        cell.chatImage.image = image
+        currentMessages[indexPath.row].image = image
+        messageLists[self.chatRoom!]?[indexPath.row].image = image
+        cell.setNeedsLayout()
+    }
 }
