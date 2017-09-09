@@ -157,9 +157,17 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             chatDatasource.currentMessages.removeAll()
             //chatTable.numberOfRows(inSection: 0)
             FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
+              chatTable.reloadData()
+        } else {
+            chatTable.reloadData()
+            let bottomIndex = IndexPath(row: ((chatDatasource.currentMessages.count)-1), section: 0)
+            chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
         }
         
-        chatTable.reloadData()
+      
+        
+
+       // FBClient.seeBottomMsg(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
         
     }
 }
