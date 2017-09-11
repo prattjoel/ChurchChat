@@ -118,7 +118,7 @@ class FirebaseClient {
         chatDataSource.setCurrentMessages(chatRoom: chatRoom)
         
         let bottomIndex = IndexPath(row: ((chatDataSource.currentMessages.count)-1), section: 0)
-        chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
+        chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: false)
     }
     
     

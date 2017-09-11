@@ -13,6 +13,7 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var chatTitle: UILabel!
     @IBOutlet weak var chatImage: UIImageView!
     @IBOutlet weak var chatMessage: UILabel!
+    @IBOutlet weak var imageIndicator: UIActivityIndicatorView!
     
     override func prepareForReuse() {
         super.prepareForReuse()

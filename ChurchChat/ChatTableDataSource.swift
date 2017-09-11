@@ -29,7 +29,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         let id = "chatCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! ChatCell
-        
+        cell.imageIndicator.isHidden = true
+        cell.imageIndicator.hidesWhenStopped = true
         return checkForImage(indexPath: indexPath, cell: cell, tableView: tableView)
 
     }
@@ -48,6 +49,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         } else {
             
             if let photoUrl = message.url {
+                cell.imageIndicator.isHidden = false
+                cell.imageIndicator.startAnimating()
                 cell.chatTitle.text = "From: \(name)"
                 FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
                     guard error == nil else {
@@ -58,6 +61,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                     let messagePhoto = UIImage.init(data: data!, scale: 50)
                     if cell == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
+                            cell.imageIndicator.stopAnimating()
                             self.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
                         }
                     }
