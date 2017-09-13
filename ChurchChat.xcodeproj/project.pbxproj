@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D05ED571F6853E6008378DB /* ChatMessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D05ED561F6853E6008378DB /* ChatMessageStore.swift */; };
 		5D2CDF8E1EB4E8C600754764 /* CommunicationFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CDF8D1EB4E8C600754764 /* CommunicationFormVC.swift */; };
 		5D482C171EBA468000AF2382 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D482C161EBA468000AF2382 /* ContactInfo.swift */; };
 		5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */; };
 		5D4970281E58E40700B4C3D9 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */; };
 		5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5057091E58CA44000EF539 /* ChatVC.swift */; };
+		5D53F0B41F69D8FD002A39D8 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D53F0B31F69D8FD002A39D8 /* ChatRoom.swift */; };
 		5D5B06B91F4EAD3E00DFFEF8 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B06B81F4EAD3E00DFFEF8 /* ChatMessage.swift */; };
 		5D5F80211E5CEF0600AE65DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */; };
 		5DA5A7AB1EBB7D7500E1201D /* DonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */; };
@@ -45,12 +47,14 @@
 
 /* Begin PBXFileReference section */
 		2F89217FD537845803898AF4 /* Pods_ChurchChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurchChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D05ED561F6853E6008378DB /* ChatMessageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageStore.swift; sourceTree = "<group>"; };
 		5D2CDF8D1EB4E8C600754764 /* CommunicationFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationFormVC.swift; sourceTree = "<group>"; };
 		5D482C161EBA468000AF2382 /* ContactInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableDataSource.swift; sourceTree = "<group>"; };
 		5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5D4BE1311F354FDA003D121A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D5057091E58CA44000EF539 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		5D53F0B31F69D8FD002A39D8 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		5D5B06B81F4EAD3E00DFFEF8 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		5D5F80201E5CEF0600AE65DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DA5A7AA1EBB7D7500E1201D /* DonateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateVC.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 			children = (
 				5D4970231E58DE4600B4C3D9 /* ChatTableDataSource.swift */,
 				5D5B06B81F4EAD3E00DFFEF8 /* ChatMessage.swift */,
+				5D53F0B31F69D8FD002A39D8 /* ChatRoom.swift */,
+				5D05ED561F6853E6008378DB /* ChatMessageStore.swift */,
 				5D4970271E58E40700B4C3D9 /* FirebaseClient.swift */,
 				5D482C161EBA468000AF2382 /* ContactInfo.swift */,
 				5DFA9C951E6B80E700B06F34 /* Constants.swift */,
@@ -393,9 +399,11 @@
 			files = (
 				5DFA9C961E6B80E700B06F34 /* Constants.swift in Sources */,
 				5D50570A1E58CA44000EF539 /* ChatVC.swift in Sources */,
+				5D05ED571F6853E6008378DB /* ChatMessageStore.swift in Sources */,
 				5DC734201F46738B009A1550 /* ChatCell.swift in Sources */,
 				5D5B06B91F4EAD3E00DFFEF8 /* ChatMessage.swift in Sources */,
 				5DF82A101E57B2C500A00290 /* AppDelegate.swift in Sources */,
+				5D53F0B41F69D8FD002A39D8 /* ChatRoom.swift in Sources */,
 				5D2CDF8E1EB4E8C600754764 /* CommunicationFormVC.swift in Sources */,
 				5D4970241E58DE4600B4C3D9 /* ChatTableDataSource.swift in Sources */,
 				5DA5A7AB1EBB7D7500E1201D /* DonateVC.swift in Sources */,

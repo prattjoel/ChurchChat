@@ -34,8 +34,8 @@ class FirebaseClient {
         
         authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
             
-           chatDataSource.setCurrentMessages(chatRoom: chatRoom)
-            chatDataSource.currentMessages.removeAll(keepingCapacity: false)
+           // chatDataSource.setCurrentMessages(chatRoom: chatRoom)
+            // chatDataSource.currentMessages.removeAll(keepingCapacity: false)
             //chatDataSource.messages.removeAll(keepingCapacity: false)
             chatTable.reloadData()
             
@@ -62,9 +62,14 @@ class FirebaseClient {
         dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
             let chatMessage = ChatMessage.init(snapShot: snapshot)
-            chatDataSource.updateDataSource(chatRoom: chatRoom, message: chatMessage)
+            let currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
+           // let messageStore = ChatMessageStore(messageStore: [chatRoom: [chatMessage]], currentMessages: [chatMessage], chatRoom: chatRoom)
+            // chatDataSource.messageStore = messageStore
+            chatDataSource.currentChatRoom = currentChatRoom
+            chatDataSource.messageStore?.updateMessageStore(chatRoom: chatRoom, message: chatMessage)
+          //  chatDataSource.setCurrentMessages(chatRoom: chatRoom)
         
-            chatTable.insertRows(at: [IndexPath(row: (chatDataSource.currentMessages.count) - 1, section: 0)], with: .automatic)
+            chatTable.insertRows(at: [IndexPath(row: (chatDataSource.currentChatRoom?.numberOfMessages)! - 1, section: 0)], with: .automatic)
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
         })
         
@@ -115,9 +120,9 @@ class FirebaseClient {
     
     func seeBottomMsg(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
         
-        chatDataSource.setCurrentMessages(chatRoom: chatRoom)
+      //  chatDataSource.setCurrentMessages(chatRoom: chatRoom)
         
-        let bottomIndex = IndexPath(row: ((chatDataSource.currentMessages.count)-1), section: 0)
+        let bottomIndex = IndexPath(row: ((chatDataSource.currentChatRoom?.numberOfMessages)!-1), section: 0)
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: false)
     }
     
