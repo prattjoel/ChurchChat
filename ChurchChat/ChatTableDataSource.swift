@@ -73,6 +73,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                     if cell == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
                             cell.imageIndicator.stopAnimating()
+                            self.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
+                            self.currentChatRoom?.chatRoom[indexPath.row].image = messagePhoto
                            // self.messageStore!.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
                         }
                     }
@@ -108,11 +110,12 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
 //        }
 //    }
 //    
-//    // Add UIImage to cell in the appropriate message array
-//    func addImageToMessage(image: UIImage, cell: ChatCell, indexPath: IndexPath) {
-//        cell.chatImage.image = image
-//        currentMessages[indexPath.row].image = image
-//        messageLists[self.chatRoom!]?[indexPath.row].image = image
-//        cell.setNeedsLayout()
-//    }
+    // Add UIImage to cell in the appropriate message array
+    func addImageToMessage(image: UIImage, cell: ChatCell, indexPath: IndexPath) {
+        cell.chatImage.image = image
+       // message.image = image
+      //  currentMessages[indexPath.row].image = image
+      //  messageLists[self.chatRoom!]?[indexPath.row].image = image
+        cell.setNeedsLayout()
+    }
 }

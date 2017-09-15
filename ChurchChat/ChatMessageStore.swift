@@ -27,6 +27,18 @@ struct ChatMessageStore {
     
     mutating func addChatroom(room: ChatRoom) {
         messageStore.append(room)
+        roomNames.append(room.name)
+    }
+    
+    mutating func updateRoom(message: ChatMessage, name: String) {
+        var index = 0
+        for room in messageStore {
+            if room.name == name {
+                messageStore[index].addMessge(message: message)
+              //  room.addMessge(message: message)
+                index += 1
+            }
+        }
     }
     
     mutating func getRoomNames() -> [String] {
@@ -35,6 +47,14 @@ struct ChatMessageStore {
         }
         
         return roomNames
+    }
+    
+    func isInStore(room: String) -> Bool {
+        if roomNames.contains(room) {
+            return true
+        } else {
+            return false
+        }
     }
     
     

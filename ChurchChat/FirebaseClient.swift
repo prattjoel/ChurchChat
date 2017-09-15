@@ -64,11 +64,16 @@ class FirebaseClient {
             
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             
-            if let room = self.messageStore.getCurrentRoom(roomName: chatRoom) {
-                self.currentChatRoom = room
-                self.currentChatRoom?.addMessge(message: chatMessage)
+//            if let room = self.messageStore.getCurrentRoom(roomName: chatRoom) {
+//                self.currentChatRoom = room
+            if self.messageStore.isInStore(room: chatRoom) {
+                self.messageStore.updateRoom(message: chatMessage, name: chatRoom)
+                self.currentChatRoom = self.messageStore.getCurrentRoom(roomName: chatRoom)
+                //self.currentChatRoom!.addMessge(message: chatMessage)
             } else {
                 self.currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
+                self.currentChatRoom?.addMessge(message: chatMessage)
+                self.messageStore.addChatroom(room: self.currentChatRoom!)
             }
             
             chatDataSource.currentChatRoom = self.currentChatRoom

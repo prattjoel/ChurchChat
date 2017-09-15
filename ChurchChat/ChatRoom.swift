@@ -15,12 +15,14 @@ struct ChatRoom {
     
     init (message: ChatMessage, chatRoomName: String) {
         name = chatRoomName
+        //chatRoom.append(message)
         numberOfMessages = chatRoom.count
-        chatRoom.append(message)
+        
     }
     
     mutating func addMessge(message: ChatMessage){
         chatRoom.append(message)
+        numberOfMessages = chatRoom.count
         
     }
 }
