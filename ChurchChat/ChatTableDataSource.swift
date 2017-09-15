@@ -73,7 +73,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                     if cell == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
                             cell.imageIndicator.stopAnimating()
-                            self.messageStore!.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
+                           // self.messageStore!.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
                         }
                     }
                 })

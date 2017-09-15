@@ -151,18 +151,18 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             chatRoom = Constants.messages
         }
         
-        chatDatasource.messageStore?.setCurrentMessages(chatRoom: chatRoom!)
-        
-        if chatDatasource.messageStore?.messageStore[chatRoom!] == nil {
-            chatDatasource.messageStore?.currentMessages.removeAll()
-            //chatTable.numberOfRows(inSection: 0)
-            FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
-              chatTable.reloadData()
-        } else {
-            chatTable.reloadData()
-            let bottomIndex = IndexPath(row: ((chatDatasource.messageStore!.currentMessages.count)-1), section: 0)
-            chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
-        }
+//        chatDatasource.messageStore?.setCurrentMessages(chatRoom: chatRoom!)
+//        
+//        if chatDatasource.messageStore?.messageStore[chatRoom!] == nil {
+//            chatDatasource.messageStore?.currentMessages.removeAll()
+//            //chatTable.numberOfRows(inSection: 0)
+//            FBClient.databaseConfig(chatDataSource: chatDatasource, chatTable: chatTable, chatRoom: chatRoom!)
+//              chatTable.reloadData()
+//        } else {
+//            chatTable.reloadData()
+//            let bottomIndex = IndexPath(row: ((chatDatasource.messageStore!.currentMessages.count)-1), section: 0)
+//            chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: true)
+//        }
         
       
         

@@ -21,7 +21,8 @@ class FirebaseClient {
     var user: FIRUser!
     var name = "anonymous"
     var authUI: FUIAuth!
-    
+    var currentChatRoom: ChatRoom?
+    var messageStore = ChatMessageStore()
     
     
     // MARK: - Firebase Config Methods
@@ -62,11 +63,28 @@ class FirebaseClient {
         dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
             let chatMessage = ChatMessage.init(snapShot: snapshot)
-            let currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
-           // let messageStore = ChatMessageStore(messageStore: [chatRoom: [chatMessage]], currentMessages: [chatMessage], chatRoom: chatRoom)
-            // chatDataSource.messageStore = messageStore
-            chatDataSource.currentChatRoom = currentChatRoom
-            chatDataSource.messageStore?.updateMessageStore(chatRoom: chatRoom, message: chatMessage)
+            
+            if let room = self.messageStore.getCurrentRoom(roomName: chatRoom) {
+                self.currentChatRoom = room
+                self.currentChatRoom?.addMessge(message: chatMessage)
+            } else {
+                self.currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
+            }
+            
+            chatDataSource.currentChatRoom = self.currentChatRoom
+            
+//            if self.currentChatRoom == nil {
+//                let room = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
+//                self.currentChatRoom = room
+//            } else {
+//                self.currentChatRoom?.addMessge(message: chatMessage)
+//            }
+            
+//            let currentChatRoom =ChatRoom(message: chatMessage, chatRoomName: chatRoom)
+//            let messageStore = ChatMessageStore(messageStore: [chatRoom: [chatMessage]], currentMessages: [chatMessage], chatRoom: chatRoom)
+//             chatDataSource.messageStore = messageStore
+            // chatDataSource.currentChatRoom = self.currentChatRoom
+          //  chatDataSource.messageStore?.updateMessageStore(chatRoom: chatRoom, message: chatMessage)
           //  chatDataSource.setCurrentMessages(chatRoom: chatRoom)
         
             chatTable.insertRows(at: [IndexPath(row: (chatDataSource.currentChatRoom?.numberOfMessages)! - 1, section: 0)], with: .automatic)

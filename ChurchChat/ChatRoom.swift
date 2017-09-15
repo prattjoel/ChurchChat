@@ -9,13 +9,18 @@
 import Foundation
 
 struct ChatRoom {
-    var chatRoom: [ChatMessage]
-    var roomName: String
+    var chatRoom = [ChatMessage]()
+    var name: String
     var numberOfMessages: Int
     
     init (message: ChatMessage, chatRoomName: String) {
-        chatRoom = [message]
-        roomName = chatRoomName
+        name = chatRoomName
         numberOfMessages = chatRoom.count
+        chatRoom.append(message)
+    }
+    
+    mutating func addMessge(message: ChatMessage){
+        chatRoom.append(message)
+        
     }
 }
