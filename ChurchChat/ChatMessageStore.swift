@@ -14,11 +14,13 @@ struct ChatMessageStore {
     
     var messageStore = [ChatRoom]()
     var roomNames = [String]()
+    //var currentChatroom: ChatRoom?
     
-    func getCurrentRoom(roomName: String) -> ChatRoom? {
+    func getCurrentRoom(roomName: String?) -> ChatRoom? {
         
         for room in messageStore {
             if room.name == roomName {
+                //currentChatroom = room
                 return room
             }
         }

@@ -18,17 +18,19 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     
     var chatRoom: String?
     
-    var messageStore: ChatMessageStore?
+    var messageStore = ChatMessageStore()
     
     // MARK: - TableView DataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         
-        if let messages = currentChatRoom {
-            return messages.numberOfMessages
+        if let messageCount = currentChatRoom?.numberOfMessages {
+                return messageCount
         } else {
             return 0
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,7 +49,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     func checkForImage(indexPath: IndexPath, cell: ChatCell, tableView: UITableView) -> ChatCell? {
         
         guard let messages = currentChatRoom else {
-            print("no messages found")
+            print("no messages found in currentChatroom")
             return nil
         }
        
@@ -74,7 +76,7 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                         DispatchQueue.main.async {
                             cell.imageIndicator.stopAnimating()
                             self.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
-                            self.currentChatRoom?.chatRoom[indexPath.row].image = messagePhoto
+                            //self.currentChatRoom?.chatRoom[indexPath.row].image = messagePhoto
                            // self.messageStore!.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
                         }
                     }
@@ -88,15 +90,12 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
-    // Set the current array of messages to be displayed
-//    func setCurrentMessages(chatRoom: String) {
-//        
-//        self.chatRoom = chatRoom
-//        
-//        if let messages = messageStore?.messageStore[chatRoom] {
-//            currentMessages = messages
-//        }
-//    }
+     // Set the current array of messages to be displayed
+    func setCurrentMessages(store: ChatMessageStore, chatRoom: String) {
+        messageStore = store
+        currentChatRoom = store.getCurrentRoom(roomName: chatRoom)
+        self.chatRoom = chatRoom
+    }
 //
 //    // Add messages to appropriate array of messages
 //    func updateDataSource(chatRoom: String, message: ChatMessage) {
@@ -113,6 +112,15 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     // Add UIImage to cell in the appropriate message array
     func addImageToMessage(image: UIImage, cell: ChatCell, indexPath: IndexPath) {
         cell.chatImage.image = image
+        var index = 0
+        for room in messageStore.messageStore {
+            if room.name == chatRoom {
+                messageStore.messageStore[index].chatRoom[indexPath.row].image = image
+                index += 1
+            } else {
+                print("Could not add image to message in message store")
+            }
+        }
        // message.image = image
       //  currentMessages[indexPath.row].image = image
       //  messageLists[self.chatRoom!]?[indexPath.row].image = image

@@ -62,37 +62,29 @@ class FirebaseClient {
 
         dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
+            chatDataSource.chatRoom = chatRoom
+            
+        
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             
 //            if let room = self.messageStore.getCurrentRoom(roomName: chatRoom) {
 //                self.currentChatRoom = room
             if self.messageStore.isInStore(room: chatRoom) {
                 self.messageStore.updateRoom(message: chatMessage, name: chatRoom)
-                self.currentChatRoom = self.messageStore.getCurrentRoom(roomName: chatRoom)
+               // self.currentChatRoom = self.messageStore.getCurrentRoom(roomName: chatRoom)
                 //self.currentChatRoom!.addMessge(message: chatMessage)
             } else {
                 self.currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
-                self.currentChatRoom?.addMessge(message: chatMessage)
+              //  self.currentChatRoom?.addMessge(message: chatMessage)
                 self.messageStore.addChatroom(room: self.currentChatRoom!)
             }
             
-            chatDataSource.currentChatRoom = self.currentChatRoom
+            chatDataSource.setCurrentMessages(store: self.messageStore, chatRoom: chatRoom)
+           // chatDataSource.currentChatRoom = self.currentChatRoom
             
-//            if self.currentChatRoom == nil {
-//                let room = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
-//                self.currentChatRoom = room
-//            } else {
-//                self.currentChatRoom?.addMessge(message: chatMessage)
-//            }
+            let messageCount = self.messageStore.getCurrentRoom(roomName: chatRoom)?.numberOfMessages
             
-//            let currentChatRoom =ChatRoom(message: chatMessage, chatRoomName: chatRoom)
-//            let messageStore = ChatMessageStore(messageStore: [chatRoom: [chatMessage]], currentMessages: [chatMessage], chatRoom: chatRoom)
-//             chatDataSource.messageStore = messageStore
-            // chatDataSource.currentChatRoom = self.currentChatRoom
-          //  chatDataSource.messageStore?.updateMessageStore(chatRoom: chatRoom, message: chatMessage)
-          //  chatDataSource.setCurrentMessages(chatRoom: chatRoom)
-        
-            chatTable.insertRows(at: [IndexPath(row: (chatDataSource.currentChatRoom?.numberOfMessages)! - 1, section: 0)], with: .automatic)
+            chatTable.insertRows(at: [IndexPath(row: messageCount! - 1, section: 0)], with: .automatic)
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
         })
         

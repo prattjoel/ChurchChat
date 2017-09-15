@@ -15,7 +15,7 @@ struct ChatRoom {
     
     init (message: ChatMessage, chatRoomName: String) {
         name = chatRoomName
-        //chatRoom.append(message)
+        chatRoom.append(message)
         numberOfMessages = chatRoom.count
         
     }
