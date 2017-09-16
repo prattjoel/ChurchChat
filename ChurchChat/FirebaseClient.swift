@@ -22,8 +22,7 @@ class FirebaseClient {
     var name = "anonymous"
     var authUI: FUIAuth!
     var currentChatRoom: ChatRoom?
-    var messageStore = ChatMessageStore()
-    
+    var messageCount: Int?
     
     // MARK: - Firebase Config Methods
     
@@ -35,9 +34,6 @@ class FirebaseClient {
         
         authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
             
-           // chatDataSource.setCurrentMessages(chatRoom: chatRoom)
-            // chatDataSource.currentMessages.removeAll(keepingCapacity: false)
-            //chatDataSource.messages.removeAll(keepingCapacity: false)
             chatTable.reloadData()
             
             if let currentUser = user {
@@ -67,24 +63,15 @@ class FirebaseClient {
         
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             
-//            if let room = self.messageStore.getCurrentRoom(roomName: chatRoom) {
-//                self.currentChatRoom = room
-            if self.messageStore.isInStore(room: chatRoom) {
-                self.messageStore.updateRoom(message: chatMessage, name: chatRoom)
-               // self.currentChatRoom = self.messageStore.getCurrentRoom(roomName: chatRoom)
-                //self.currentChatRoom!.addMessge(message: chatMessage)
+            if ChatMessageStore.sharedInstance.isInStore(room: chatRoom) {
+                ChatMessageStore.sharedInstance.updateRoom(message: chatMessage, name: chatRoom)
             } else {
                 self.currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
-              //  self.currentChatRoom?.addMessge(message: chatMessage)
-                self.messageStore.addChatroom(room: self.currentChatRoom!)
+                ChatMessageStore.sharedInstance.addChatroom(room: self.currentChatRoom!)
             }
             
-            chatDataSource.setCurrentMessages(store: self.messageStore, chatRoom: chatRoom)
-           // chatDataSource.currentChatRoom = self.currentChatRoom
-            
-            let messageCount = self.messageStore.getCurrentRoom(roomName: chatRoom)?.numberOfMessages
-            
-            chatTable.insertRows(at: [IndexPath(row: messageCount! - 1, section: 0)], with: .automatic)
+            self.messageCount = ChatMessageStore.sharedInstance.currentChatroom?.numberOfMessages
+            chatTable.insertRows(at: [IndexPath(row: self.messageCount! - 1, section: 0)], with: .automatic)
             self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
         })
         
@@ -135,9 +122,7 @@ class FirebaseClient {
     
     func seeBottomMsg(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
         
-      //  chatDataSource.setCurrentMessages(chatRoom: chatRoom)
-        
-        let bottomIndex = IndexPath(row: ((chatDataSource.currentChatRoom?.numberOfMessages)!-1), section: 0)
+        let bottomIndex = IndexPath(row: (self.messageCount!-1), section: 0)
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: false)
     }
     

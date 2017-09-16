@@ -11,16 +11,17 @@ import UIKit
 
 struct ChatMessageStore {
     
+    static var sharedInstance = ChatMessageStore()
     
     var messageStore = [ChatRoom]()
     var roomNames = [String]()
-    //var currentChatroom: ChatRoom?
+    var currentChatroom: ChatRoom?
     
-    func getCurrentRoom(roomName: String?) -> ChatRoom? {
+    mutating func getCurrentRoom(roomName: String?) -> ChatRoom? {
         
         for room in messageStore {
             if room.name == roomName {
-                //currentChatroom = room
+                currentChatroom = room
                 return room
             }
         }
@@ -30,6 +31,7 @@ struct ChatMessageStore {
     mutating func addChatroom(room: ChatRoom) {
         messageStore.append(room)
         roomNames.append(room.name)
+        currentChatroom = room
     }
     
     mutating func updateRoom(message: ChatMessage, name: String) {
@@ -37,9 +39,10 @@ struct ChatMessageStore {
         for room in messageStore {
             if room.name == name {
                 messageStore[index].addMessge(message: message)
+                currentChatroom = messageStore[index]
               //  room.addMessge(message: message)
-                index += 1
             }
+            index += 1
         }
     }
     
