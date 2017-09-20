@@ -73,7 +73,9 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
                     if cell == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
                             cell.imageIndicator.stopAnimating()
-                            self.addImageToMessage(image: messagePhoto!, cell: cell, indexPath: indexPath)
+                            cell.chatImage.image = messagePhoto!
+                            ChatMessageStore.sharedInstance.updateMessageWithImage(name: self.chatRoom!, index: indexPath.row, image: messagePhoto!)
+                            cell.setNeedsLayout()
                         }
                     }
                 })
@@ -84,21 +86,5 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
             }
         }
         return cell
-    }
-    
-    // Add UIImage to cell in the appropriate message array
-    func addImageToMessage(image: UIImage, cell: ChatCell, indexPath: IndexPath) {
-        cell.chatImage.image = image
-        var index = 0
-        for room in ChatMessageStore.sharedInstance.messageStore {
-            if room.name == chatRoom {
-                ChatMessageStore.sharedInstance.messageStore[index].chatRoom[indexPath.row].image = image
-                ChatMessageStore.sharedInstance.currentChatroom = ChatMessageStore.sharedInstance.messageStore[index]
-            } else {
-                print("Could not add image to message in message store")
-            }
-            index += 1
-        }
-        cell.setNeedsLayout()
     }
 }

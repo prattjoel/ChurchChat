@@ -17,6 +17,7 @@ struct ChatMessageStore {
     var roomNames = [String]()
     var currentChatroom: ChatRoom?
     
+    // Get the current chatRoom based on its name.
     mutating func getCurrentRoom(roomName: String?) -> ChatRoom? {
         
         for room in messageStore {
@@ -28,12 +29,14 @@ struct ChatMessageStore {
         return nil
     }
     
+    // Add chatRoom to the messageStore
     mutating func addChatroom(room: ChatRoom) {
         messageStore.append(room)
         roomNames.append(room.name)
         currentChatroom = room
     }
     
+    // Add message to the current ChatRoom
     mutating func updateRoom(message: ChatMessage, name: String) {
         var index = 0
         for room in messageStore {
@@ -46,6 +49,7 @@ struct ChatMessageStore {
         }
     }
     
+    // Get the names of rooms in the store
     mutating func getRoomNames() -> [String] {
         for room in messageStore {
             roomNames.append(room.name)
@@ -54,6 +58,7 @@ struct ChatMessageStore {
         return roomNames
     }
     
+    // Check if a ChatRoom exists in the store
     func isInStore(room: String) -> Bool {
         if roomNames.contains(room) {
             return true
@@ -62,39 +67,16 @@ struct ChatMessageStore {
         }
     }
     
+    // Add UIImage to ChatMessage
     
-    
-    //    var messageStore: [String: [ChatMessage]]
-    //
-    //    var currentMessages: [ChatMessage]
-    //
-    //    var chatRoom: String?
-    //
-    //    mutating func updateMessageStore(chatRoom: String, message: ChatMessage) {
-    //
-    //        if (messageStore[chatRoom] != nil) {
-    //            messageStore[chatRoom]?.append(message)
-    //            currentMessages = messageStore[chatRoom]!
-    //        } else {
-    //            messageStore[chatRoom] = [message]
-    //            currentMessages = messageStore[chatRoom]!
-    //        }
-    //    }
-    //
-    //    mutating func setCurrentMessages(chatRoom: String) {
-    //
-    //        self.chatRoom = chatRoom
-    //
-    //        if let messages = messageStore[chatRoom] {
-    //            currentMessages = messages
-    //        }
-    //    }
-    //
-    //    mutating func addImageToMessage(image: UIImage, cell: ChatCell, indexPath: IndexPath) {
-    //        cell.chatImage.image = image
-    //        currentMessages[indexPath.row].image = image
-    //        messageStore[chatRoom!]?[indexPath.row].image = image
-    //        cell.setNeedsLayout()
-    //    }
-    
+    mutating func updateMessageWithImage(name: String, index: Int, image: UIImage) {
+        var storeIndex = 0
+        for room in messageStore {
+            if room.name == name {
+                messageStore[storeIndex].chatRoom[index].image = image
+                currentChatroom = messageStore[storeIndex]
+            }
+            storeIndex += 1
+        }
+    }
 }

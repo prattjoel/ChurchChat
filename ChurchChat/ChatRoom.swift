@@ -20,6 +20,7 @@ struct ChatRoom {
         
     }
     
+    // Add ChatMessage to the chatRoom
     mutating func addMessge(message: ChatMessage){
         chatRoom.append(message)
         numberOfMessages = chatRoom.count
