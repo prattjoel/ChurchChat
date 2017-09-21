@@ -16,6 +16,9 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var chatMessage: UILabel!
     @IBOutlet weak var imageIndicator: UIActivityIndicatorView!
     
+    var imageCount = 0
+    var messages = [UIImage]()
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.chatImage.image = nil
@@ -24,7 +27,7 @@ class ChatCell: UITableViewCell {
     }
     
     func updateUI(message: ChatMessage, indexPath: IndexPath, tableView: UITableView, room: String) {
-
+        var imageCounter = 0
         let name = message.name ?? "username"
         if let image = message.image {
             chatImage.image = image
@@ -33,6 +36,8 @@ class ChatCell: UITableViewCell {
         } else {
             
             if let photoUrl = message.url {
+                imageCount += 1
+               // print("Images checked for: \(imageCount)")
                 imageIndicator.isHidden = false
                 imageIndicator.startAnimating()
                 chatTitle.text = "From: \(name)"
@@ -43,12 +48,18 @@ class ChatCell: UITableViewCell {
                     }
                     
                     let messagePhoto = UIImage.init(data: data!, scale: 50)
+                    //self.imageCount += 1
+                    self.messages.append(messagePhoto!)
+                    //print("Number of images: \(self.messages.count)")
+                    //print("\(self.imageCount) image retrieved")
                     if self == tableView.cellForRow(at: indexPath) {
                         DispatchQueue.main.async {
                             self.imageIndicator.stopAnimating()
                             self.chatImage.image = messagePhoto!
                             ChatMessageStore.sharedInstance.updateMessageWithImage(name: room, index: indexPath.row, image: messagePhoto!)
                             self.setNeedsLayout()
+                            imageCounter += 1
+                            print("\(imageCounter). Image added")
                         }
                     }
                 })

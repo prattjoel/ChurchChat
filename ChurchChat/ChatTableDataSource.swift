@@ -18,6 +18,8 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
     
     var chatRoom: String?
     
+    var imageCheck = 0
+    
     // MARK: - TableView DataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,8 +53,12 @@ class ChatTableDataSource: NSObject, UITableViewDataSource {
             return nil
         }
         
+        imageCheck += 1
+        
         let message = messages.chatRoom[indexPath.row]
         cell.updateUI(message: message, indexPath: indexPath, tableView: tableView, room: chatRoom!)
+        
+        print("Images checked for: \(imageCheck)")
         return cell
     }
 }

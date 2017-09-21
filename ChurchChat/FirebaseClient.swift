@@ -41,8 +41,11 @@ class FirebaseClient {
                     self.user = currentUser
                     self.name = user!.email!.components(separatedBy: "@")[0]
                     self.databaseConfig(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
-                    
                     self.storageConfig()
+                    
+                    //messageCount =
+                    
+                    //self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
                     completion(true)
                 }
             } else {
@@ -55,12 +58,12 @@ class FirebaseClient {
     
     func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
         dbRef = FIRDatabase.database().reference()
-
+        
         dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
             chatDataSource.chatRoom = chatRoom
             
-        
+            
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             
             if ChatMessageStore.sharedInstance.isInStore(room: chatRoom) {
@@ -69,14 +72,15 @@ class FirebaseClient {
                 self.currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
                 ChatMessageStore.sharedInstance.addChatroom(room: self.currentChatRoom!)
             }
-            
+
             self.messageCount = ChatMessageStore.sharedInstance.currentChatroom?.numberOfMessages
             chatTable.insertRows(at: [IndexPath(row: self.messageCount! - 1, section: 0)], with: .automatic)
-            self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
+
+            DispatchQueue.main.async {
+                print("going to bottom")
+                self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
+            }
         })
-        
-    
-        
     }
     
     
@@ -124,9 +128,7 @@ class FirebaseClient {
         
         let bottomIndex = IndexPath(row: (self.messageCount!-1), section: 0)
         chatTable.scrollToRow(at: bottomIndex, at: .bottom, animated: false)
-    }
-    
-    
+    }    
 }
 
 extension FirebaseClient {
