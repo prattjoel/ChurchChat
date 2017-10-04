@@ -18,6 +18,7 @@ class FirebaseClient {
     var storageRef: FIRStorageReference!
     var dbHandle: FIRDatabaseHandle!
     var authListener: FIRAuthStateDidChangeListenerHandle!
+    var firData = FIRMutableData()
     var user: FIRUser!
     var name = "anonymous"
     var authUI: FUIAuth!
@@ -46,6 +47,7 @@ class FirebaseClient {
                     //messageCount =
                     
                     //self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
+                    
                     completion(true)
                 }
             } else {
@@ -58,11 +60,18 @@ class FirebaseClient {
     
     func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
         dbRef = FIRDatabase.database().reference()
+        var messageCounter = 0
+        var messagesInDatabase: Int?
+        
+        
+        dbRef.child(chatRoom).observe(.value, with: { (snapShot) in
+            messagesInDatabase = Int(snapShot.childrenCount)
+            //print("\n Messages in database from messages snapshot: \(messagesInDatabase!) \n")
+        })
         
         dbHandle = dbRef.child(chatRoom).observe(.childAdded, with: { (snapshot) in
             
             chatDataSource.chatRoom = chatRoom
-            
             
             let chatMessage = ChatMessage.init(snapShot: snapshot)
             
@@ -72,13 +81,30 @@ class FirebaseClient {
                 self.currentChatRoom = ChatRoom(message: chatMessage, chatRoomName: chatRoom)
                 ChatMessageStore.sharedInstance.addChatroom(room: self.currentChatRoom!)
             }
-
+            
             self.messageCount = ChatMessageStore.sharedInstance.currentChatroom?.numberOfMessages
             chatTable.insertRows(at: [IndexPath(row: self.messageCount! - 1, section: 0)], with: .automatic)
-
+            
+            
+            
             DispatchQueue.main.async {
-                print("going to bottom")
-                self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
+                messageCounter += 1
+                if messageCounter == messagesInDatabase {
+                    //self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
+                    
+                    print("content height: \(chatTable.contentSize.height)")
+                    print("tabe height: \(chatTable.bounds.size.height)")
+                    print("table inset: \(chatTable.contentInset.bottom)")
+                  let bottomOffSet = CGPoint(x:0, y: chatTable.contentSize.height - chatTable.bounds.size.height + chatTable.contentInset.bottom)
+                    chatTable.setContentOffset(bottomOffSet, animated: false)
+//                    print("going to bottom: \(bottomCount)")
+//                    print("message count: \(self.messageCount!)")
+//                    print("messages in Databsase: \(messagesInDatabase!)")
+////                        let offSet = CGPoint(x: 0, y: chatTable.contentSize.height - 100)
+////
+////                    chatTable.setContentOffset(offSet, animated: false)
+
+                }
             }
         })
     }

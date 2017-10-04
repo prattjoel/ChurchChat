@@ -37,6 +37,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatRoom = Constants.messages
+
         chatTable.dataSource = chatDatasource
         chatTable.rowHeight = UITableViewAutomaticDimension
          chatTable.estimatedRowHeight = 120
@@ -102,6 +103,28 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+        
+//        let bottomOffSet = CGPoint(x:0, y: table.contentSize.height - table.bounds.size.height + table.contentInset.bottom)
+//        //table.contentOffset = bottomOffSet
+//        table.setContentOffset(bottomOffSet, animated: true)
+//        table.reloadData()
+//    }
+//        var insetTop = table.bounds.size.height
+//        let insetBottom = table.bounds.size.height - (self.tabBarController?.tabBar.frame.size.height ?? 0)
+//        let rowNum = table.numberOfRows(inSection: 0)
+//
+//        for row in 0..<rowNum {
+//            let rowHeight = table.rectForRow(at: IndexPath(item: row, section: 0)).size.height
+//            insetTop -= rowHeight
+//
+//            if insetTop <= 0 {
+//                insetTop = 0
+//                break
+//            }
+//        }
+//
+//        table.contentInset = UIEdgeInsetsMake(insetTop, 0, insetBottom, 0)
+//    }
     // MARK: Actions
     
     @IBAction func sendButton(_ sender: Any) {
