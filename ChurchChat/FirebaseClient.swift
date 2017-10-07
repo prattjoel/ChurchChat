@@ -90,13 +90,13 @@ class FirebaseClient {
             DispatchQueue.main.async {
                 messageCounter += 1
                 if messageCounter == messagesInDatabase {
-                    //self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
+                    self.seeBottomMsg(chatDataSource: chatDataSource, chatTable: chatTable, chatRoom: chatRoom)
                     
                     print("content height: \(chatTable.contentSize.height)")
                     print("tabe height: \(chatTable.bounds.size.height)")
                     print("table inset: \(chatTable.contentInset.bottom)")
-                  let bottomOffSet = CGPoint(x:0, y: chatTable.contentSize.height - chatTable.bounds.size.height + chatTable.contentInset.bottom)
-                    chatTable.setContentOffset(bottomOffSet, animated: false)
+//                  let bottomOffSet = CGPoint(x:0, y: chatTable.contentSize.height - chatTable.bounds.size.height + chatTable.contentInset.bottom)
+//                    chatTable.setContentOffset(bottomOffSet, animated: false)
 //                    print("going to bottom: \(bottomCount)")
 //                    print("message count: \(self.messageCount!)")
 //                    print("messages in Databsase: \(messagesInDatabase!)")
