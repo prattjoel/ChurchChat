@@ -64,7 +64,7 @@ class CommunicationFormVC: FormViewController {
                 })
     }
     
-    func sendContactInfo() {
+    @objc func sendContactInfo() {
         
     }
 }

@@ -15,7 +15,7 @@ struct ChatMessage {
     var name: String?
     var url: String?
     
-    init(snapShot: FIRDataSnapshot) {
+    init(snapShot: DataSnapshot) {
         
         let shotData = snapShot.value as! [String: String]
         

@@ -14,12 +14,12 @@ class FirebaseClient {
     
     // MARK: Properties
     
-    var dbRef: FIRDatabaseReference!
-    var storageRef: FIRStorageReference!
-    var dbHandle: FIRDatabaseHandle!
-    var authListener: FIRAuthStateDidChangeListenerHandle!
-    var firData = FIRMutableData()
-    var user: FIRUser!
+    var dbRef: DatabaseReference!
+    var storageRef: StorageReference!
+    var dbHandle: DatabaseHandle!
+    var authListener: AuthStateDidChangeListenerHandle!
+    var firData = MutableData()
+    var user: User!
     var name = "anonymous"
     var authUI: FUIAuth!
     var currentChatRoom: ChatRoom?
@@ -33,7 +33,7 @@ class FirebaseClient {
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
         
-        authListener = FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
+        authListener = Auth.auth().addStateDidChangeListener({ (auth, user) in
             
             chatTable.reloadData()
             
@@ -59,7 +59,7 @@ class FirebaseClient {
     }
     
     func databaseConfig(chatDataSource: ChatTableDataSource, chatTable: UITableView, chatRoom: String) {
-        dbRef = FIRDatabase.database().reference()
+        dbRef = Database.database().reference()
         var messageCounter = 0
         var messagesInDatabase: Int?
         
@@ -111,7 +111,7 @@ class FirebaseClient {
     
     
     func storageConfig() {
-        storageRef = FIRStorage.storage().reference()
+        storageRef = Storage.storage().reference()
     }
     
     // MARK: - Firebase Data sending methods
@@ -136,11 +136,11 @@ class FirebaseClient {
     
     
     func sendPhoto(data: Data, chatRoom: String) {
-        let photoPath = "chat_photos/" + FIRAuth.auth()!.currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
-        let metadata = FIRStorageMetadata()
+        let photoPath = "chat_photos/" + Auth.auth().currentUser!.uid + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        let metadata = StorageMetadata()
         metadata.contentType = "image/jeg"
         
-        storageRef.child(photoPath).put(data, metadata: metadata) {(metadata, error) in
+        storageRef.child(photoPath).putData(data, metadata: metadata) {(metadata, error) in
             if let error = error {
                 print("error adding image to storage: \(error)")
                 return

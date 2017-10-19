@@ -77,7 +77,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     deinit {
         FBClient.dbRef.child(Constants.messages).removeObserver(withHandle: FBClient.dbHandle)
-        FIRAuth.auth()?.removeStateDidChangeListener(FBClient.authListener)
+        Auth.auth().removeStateDidChangeListener(FBClient.authListener)
     }
     
     
@@ -145,9 +145,9 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func signOut(_ sender: Any) {
         
-        let auth = FIRAuth.auth()
+        let auth = Auth.auth()
         do {
-            try auth?.signOut()
+            try auth.signOut()
         } catch let errorForSignOut as NSError {
             print("Error signing out: \(errorForSignOut)")
         }
@@ -210,30 +210,32 @@ extension ChatVC: UITextFieldDelegate {
         return true
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         
         keyboardDismissTapGesture.isEnabled = true
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             if self.view.frame.origin.y == 0 {
                 let tabBarHeight = self.tabBarController?.tabBar.frame.height
                 let totalSize = keyboardSize.height - tabBarHeight!
                 self.chatTable.frame.origin.y -= totalSize
                 self.messageTextStack.frame.origin.y -= totalSize
+              // self.view.frame.origin.y -= totalSize
             }
             
         }
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         keyboardDismissTapGesture.isEnabled = false
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
                 self.chatTable.frame.origin.y += keyboardSize.height
-                self.messageTextStack.frame.origin.y -= keyboardSize.height
+                self.messageTextStack.frame.origin.y += keyboardSize.height
+                //self.view.frame.origin.y -= keyboardSize.height
             }
         }
     }

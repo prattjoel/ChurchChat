@@ -41,7 +41,7 @@ class ChatCell: UITableViewCell {
                 imageIndicator.isHidden = false
                 imageIndicator.startAnimating()
                 chatTitle.text = "From: \(name)"
-                FIRStorage.storage().reference(forURL: photoUrl).data(withMaxSize: INT64_MAX, completion: { (data, error) in
+                Storage.storage().reference(forURL: photoUrl).getData(maxSize: INT64_MAX, completion: { (data, error) in
                     guard error == nil else {
                         print("error downloading image from photUrl: \(String(describing: error))")
                         return
